@@ -314,7 +314,7 @@ We compare our MSL-UNet with many state-of-the-art models on Syanpse and ACDC da
 
 \subsubsection{Results on Synapse Multi-Organ Segmentation}
 
-Results of experiments on Synapse are presented in Table \textcolor{red}{1}. In SOTAs using different type of architecture, our MSL-UNet achieves the best performance, boasting a mean DICE score of 82.56 and a mean HD95 of 16.18, surpassing PVT-CASCADE and VM-UNet. We believe two reasons help our model, one is Mamba encoder costs less resources, the other one is our MSL-UNet employs large-kernel and strip convolution that successfully enhance capacity of feature extraction. Figure \textcolonmonetary{red}{1} shows visual results of some SOTA models on Synapse segmentation. It's clear to see our MSL-UNet performs better in segmentation on tiny and linear organs, such as right kidney. Some SOTA models incorrectly predict, especially in right kindney, and other organs.
+Results of experiments on Synapse are presented in Table \textcolor{red}{1}. In SOTAs using different type of architecture, our MSL-UNet achieves the best performance, boasting a mean DICE score of 82.56 and a mean HD95 of 16.18, surpassing PVT-CASCADE and VM-UNet. We believe two facts help our model, one is Mamba encoder costs less resources, the other one is our MSL-UNet employs large-kernel and strip convolution that successfully enhance capacity of feature extraction. Figure \textcolonmonetary{red}{1} shows visual results of some SOTA models on Synapse segmentation. It's clear to see our MSL-UNet performs better in segmentation on tiny and linear organs, such as right kidney. Some SOTA models incorrectly predict, especially in right kindney, and other organs.
 
 
 
@@ -328,7 +328,24 @@ Results of experiments on ACDC are presented in Table \textcolor{red}{2}. Our mo
 
 %\subsubsection{Structure Ablation}
 
-To prove the performance of singal modules from our MSL-UNet, we build up some template models using our modules and other modules. 
+\subsubsection{Effect of Mamba Encoder}
+
+We conduct a set of experiments on the Synapse datasets to understand eth effect of different encoders. We have applied pure CNN, pure Transformer as encoder to replace mamba encoder of our MSL-UNet. Table \textcolor{red}{NO.} shows the experimental results. 
+
+
+\begin{table}
+\begin{tabular}{l|cc}\hline
+Methods & DICE  &RV \\\hline
+CNN-SL-Unet & 99 & 99	\\
+Transformer-SL-UNet & 99 &99 \\\hline
+MSL-UNet(Ours) & 99 & 99 \\\hline
+
+
+\end{tabular}
+\caption{\label{tab:widgets}Results on Syanpse of models using different encoders.}
+\end{table}
+
+
 
 
 
@@ -337,6 +354,7 @@ To prove the performance of singal modules from our MSL-UNet, we build up some t
 
 \section{Conclusions}
 
+In this paper, we have presented MSL-UNet, a new 
 
 
 
