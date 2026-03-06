@@ -30,6 +30,7 @@
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
 \usepackage{hyperref}%加入链接
+\usepackage{fontspec} %字体设置包%
 
 
 % 设置页眉页脚
@@ -38,6 +39,8 @@
 %\rhead{LSM-UNet: High-Performance U-Net Based on Large Kernel Convolution, Strip Convolution and Vision Mamba}
 %\lhead{}
 %\cfoot{\thepage}
+
+\setmainfont{Times New Roman}
 
 % 标题信息
 \title{MSL-UNet: High-Performance U-Net Based on Vision Mamba and Strip Large-Kernel Convolution}
@@ -50,7 +53,7 @@
 
 \begin{abstract}
 
-
+As a challenger to the Transformer, Mamba has increasingly been adopted as a replacement, with encoders built upon Mamba often demonstrating superior performance compared to their Transformer-based counterparts. However, while Mamba excels in encoding, its effectiveness in decoding is less satisfactory. Therefore, in this study, we propose MSL-UNet, which leverages the strengths of Mamba by employing it as the encoder. To enhance efficiency and performance, we construct a novel decoder based on strip convolutions and multi-scale large kernel convolutions, replacing the conventional Mamba-based decoder designs. In our decoder, the incorporation of strip convolutions enables the extraction of finer, more slender objects, while multi-scale large kernel convolutions further refine effective information and suppress noise. Additionally, the integration of channel attention and spatial attention mechanisms comprehensively enhances feature extraction capabilities. Experiments on the Synapse and ACDC datasets demonstrate that our MSL-UNet achieves excellent performance, particularly excelling in the segmentation of small objects.
     
 \end{abstract}
 
@@ -117,7 +120,7 @@ This fundamental limitation was addressed by the groundbreaking selective state 
 
 \section{Methodology}
 
-In this section we firstly introduce the overall architecture of our MSL-UNet and then explain the used modules.
+In this section, we will first introduce the overall architecture of MSL-UNet, followed by a detailed description of each individual module used within it, including various technical principles, implementation details, and parameter settings.
 
 \subsection{MSL-UNet}
 
@@ -146,15 +149,13 @@ As the front branch losses local features through a global modeling, we preseve 
 
 Both of the output from two branches then get hadamard producted after one more linear layer $LL(.)$. Finally, the merged features get a bit-wise addition with initial input $x$.
 
-The $VSSBlock(.)$ can be formulated as in Equations 1 to 4:
-\begin{small} 
-\begin{align} 
-Bch_{1}(x) = LN(SS2D(R(DWC(LL(LN(x))))))
-  \\Bch_{2}(x) = R(LL(LN(x)))
-  \\Mrg(x) = LL(Bch_{1}(x) \otimes Bch_{2}(x))
-  \\VSSBlock(x) = x + Mrg(x)
+The $VSSBlock(.)$ can be formulated as in Equation \textcolor{red}{1}:
+\begin{tiny} 
+\begin{align} \nonumber
+  VSSBlock(x) = x + \\
+  LL(LN(SS2D(R(DWC(LL(LN(x)))))) \otimes R(LL(LN(x))))
 \end{align} 
-\end{small}
+\end{tiny}
 
 
 
@@ -163,15 +164,12 @@ Bch_{1}(x) = LN(SS2D(R(DWC(LL(LN(x))))))
 We introduce a new strip large-kernel group attention gate(SLGAG) to get higher activation of relevant features and suppression of irrelevant ones. As shown in Figure \textcolor{red}{1} (c), SLGAG accepts two inputs $g$ and $x$ separately from a patch expanding layer in the decoder and a patch merging layer that lies one level higher than the former one, both of the input have same size to guarantee bit-wise addition opeates normally. We process $g$ and $x$ with $3 \times 3$ convolution $Cnv_{3\times 3}(.)$ and strip convolution $SC(.)$ to get feature from different dimensions. These convolved features then get batch normalized $BN(.)$ and merged through bit-wise addition. The merged feature map is activated in ReLU layer $R(.)$. Afterward, we apply a $1 \times 1$ convolution block $Cnv_{1 \times 1}(.)$ to get a singal-channel feature map. Then we exsuccessively pass the singal-channel feature map through a $BN(.)$ and a activation function $\sigma(.)$ to yield the attention coefficients. Finally, we apply hadamard product to $x$ and the activated
 singal-channel feature map, producting attention-gated feature. 
 
-The $SLGAG(.)$ can be formulated as in Equations 5 to 8: 
-\begin{small}   
-\begin{align}
-	add(.) = SC(.) + BN(Cnv_{3\times 3}(.))
-	\\Add(g,x) = add(g) + add(x)
-	\\Smd(g,x) = \sigma(BN(Cnv_{1\times 1}(R(Add(g,x)))))
-	\\SLGAG(g,x) = x \otimes Smd(g,x)
+The $SLGAG(.)$ can be formulated as in Equation \textcolor{red}{2}: 
+\begin{tiny}
+\begin{align}\nonumber
+	SLGAG(g,x) = x \otimes \sigma(BN(Cnv_{1\times 1}(R(SC(g) + \\BN(Cnv_{3\times 3}(g)) + SC(x) + BN(Cnv_{3\times 3}(x))))))
 \end{align}
-\end{small}
+\end{tiny}
 
 \subsection{Multi-scale Strip Large-kernel convolutional block (MSLCB)}
 
@@ -179,93 +177,70 @@ We introduce a new multi-scale strip large-kernel convolutional block as depicte
 
 \textbf{Channel Attention Block (CA)}: As depicted in Figure \textcolor{red}{1} (f), the input patches $x$ firtsly enter CA then split into two branches where $x$ gets separately adapted max poooling $AMP(.)$ and adapted average pooling $AAP(.)$ to extract the most significant feature of the entire feature map per channel. For each pooled feature maps, we apply two point-wise convolution $PWC_{C/r}(.)$ (i.e., r = 16) and $PWC_{C}(.)$ separately reduce and recover the number of channels, with a activation function $R(.)$ between them. Afterward, both of the pooled feature maps get a bit-wise addition before a activation function $\sigma(.)$. Finally, we apply a hadamard producting to the pooled feature maps and initial input $x$.
 
-The $CA(.)$ can be formulated as in Equations 9 to 12:
-\begin{small}   
+The $CA(.)$ can be formulated as in Equation \textcolor{red}{3}:
+\begin{tiny}   
 \begin{align}
-  z = z(x)
-  \\Bch(z) = PWC_{C}(R(PWC_{C/r}(z)))
-  \\ Add(x) = Bch(AMP(x)) + Bch(AAP(x))
-  \\CA(x) = x \otimes \sigma(Add(x))
+  CA(x) = x \otimes \sigma(PWC_{C}(R(PWC_{C/r}((AMP(x))))) + \nonumber
+  \\PWC_{C}(R(PWC_{C/r}(AAP(x)))))
 \end{align}
-\end{small}
+\end{tiny}
 
 \textbf{Spatial Attention Block (SA)}: As depicted in Figure \textcolor{red}{1} (g), similarly designed as CA, the input patches $x$ firstly get max pooling $CH_{max}(.)$ and average pooling $CH_{average}(.)$ in two different branches along the channel dimension to pay attention to local features, then get contacted before entering a large-kernel convolution layer $LKC(.)$ (i.e., size is $7\times 7$ and padding is 3), where local contextual relationships among the features will get enhanced. Finally, the contacted feature maps will undergo into an activation function $\sigma(.)$ and be hadamard producted with initial input $x$.
 
-The $SA(.)$ can be formulated as in Equations 13 and 14:
-\begin{small}   
+The $SA(.)$ can be formulated as in Equation \textcolor{red}{4}:
+\begin{tiny}   
 \begin{align}
-  Con(x) = [CH_{max}(x), CH_{average}(x)]
-  \\SA(x) = x \otimes \sigma(LCK(Con(x)))
+  SA(x) = x \otimes \sigma(LCK([CH_{max}(x), CH_{average}(x)]))
 \end{align}
-\end{small}
+\end{tiny}
 
-\textbf{Multi-scale Attention Block (MA)}: As depicted in Figure \textcolor{red}{1} (h), the input patches $x$ firstly get a channel number expanding (i.e., expanding factor is 2) in a point-wise convolution $PWC_{C\times 2}(.)$, followed by a batch normalization $BN(.)$ and a activation function $R6(.)$. Then the patches are separately passed through three depth-wise separable convolution $DWC(.)$ layers in order to capture both multi-scale and multi-resolution contexts. After feature from different channel getting summed, we use a channel shuffle $CSF(.)$ layer to incorporate relationships among channels. The shuffled feature maps then undergo into another $PWC_{C}(.)$ where number of channels get recovered, with a batch normalization layer $BN(.)$ after that. Finally, normalized feature maps get a bit-wise addition with initial input $x$.
+\textbf{Multi-scale Attention Block (MA)}: As depicted in Figure \textcolor{red}{1} (h), the input patches $x$ firstly get a channel number expanding (i.e., expanding factor is 2) in a point-wise convolution $PWC_{C\times 2}(.)$, followed by a batch normalization $BN(.)$ and a activation function $R6(.)$. Then the patches are separately passed through three depth-wise separable convolution $DWC(.)$ layers (i.e., the number and size of convolution kernel can be changed)separately uses different size convolution kernels in order to capture both multi-scale and multi-resolution contexts. After feature from different channel getting summed, we use a channel shuffle $CSF(.)$ layer to incorporate relationships among channels. The shuffled feature maps then undergo into another $PWC_{C}(.)$ where number of channels get recovered, with a batch normalization layer $BN(.)$ after that. Finally, normalized feature maps get a bit-wise addition with initial input $x$.
 
-The $MA(.)$ can be formulated as in Equations 15:
-\begin{small}   
+The $MA(.)$ can be formulated as in Equation \textcolor{red}{5}:
+\begin{tiny}   
 \begin{align}
-  Con(x) = [CH_{max}(x), CH_{average}(x)]
-  \\SA(x) = x \otimes \sigma(LCK(Con(x)))
+  SA(x) = x \otimes \sigma(LCK([CH_{max}(x), CH_{average}(x)]))
 \end{align}
-\end{small}
+\end{tiny}
 
 
 
 
 
-
+% Synapse 结果 %
 \begin{table*}
 \small
 \centering
+\label{f1}
 \begin{tabular}{l|cc|cccccccc}\hline
 Methods & DICE$\uparrow$ & HD95$\downarrow$ &Aor.& Gal. &Kid.(L) &Kid.(R) &Liv. &Pan. &Spl. &Sto. \\\hline
 
 UNet & 70.11& 44.69& 84.00 &56.70& 72.41& 62.64& 86.98& 48.73& 81.48& 67.96 \\
 AttnUNet& 71.70& 34.47& 82.61& 61.94& 76.07& 70.42& 87.54& 46.70& 80.67& 67.66 \\
+TransUNet & 77.48 &31.69& 87.23 &63.13 &81.87 &77.02 &94.08 &55.86& 85.08& 75.62	\\
 SSFormer& 78.01& 25.72&  82.78& 63.74& 80.72& 78.11& 93.53& 61.53& 87.07& 76.61 \\
 PolypPVT& 78.08& 25.61&  82.34& 66.14& 81.21& 73.78& 94.37& 59.34& 88.05& 79.4 \\
-Swin-UNet & 79.13 & 21.55 & 85.47 &66.53 &83.28 &79.61& 94.29 &56.58& 90.66& 76.60	\\
-TransDeepLab& 80.16& 21.25& 86.04& 69.16& 84.08& 79.88& 93.53& 61.19& 89.00& 78.40\\
+Swin-UNet & 79.56 & 21.55 & 85.47 &66.53 &83.28 &79.61& 94.29 &56.58& 90.66& 76.60	\\
 MT-UNet & 78.59 &26.59& 87.92& 64.99& 81.47& 77.29& 93.06& 59.46& 87.75& 76.81\\
 MEW-UNet & 78.92& 16.44& 86.68& 65.32& 82.87& 80.02& 93.63& 58.36& 90.19& 74.26\\
 PVT-CASCADE& 81.06& 20.23& 83.01& 70.59& 82.23& 80.37& 94.08& 64.43& 90.1& 83.69 \\
+TransDeepLab& 80.16& 21.25& 86.04& 69.16& 84.08& 79.88& 93.53& 61.19& 89.00& 78.40\\
 VM-UNet& 81.08& 19.21& 86.40& 69.41& 86.16& 82.76& 94.17& 58.80& 89.51& 81.40 \\
-
+TransCASCADE & 82.68 &17.34 & 86.63 &68.48& 87.66& 84.56& \textbf{94.43}& \textbf{65.33}& 90.79& 83.52\\
 \hline
-MSL-UNet(ours) &  82.56& 16.18& 87.8& 67.21& 88.07& 84.55& 95.16& 62.59& 93.25& 81.81 \\\hline
+MSL-UNet(ours) & \textbf{83.36}& \textbf{16.18}& \textbf{88.43}& \textbf{70.94}& \textbf{88.57}& \textbf{84.79}& 94.33& 64.59& \textbf{91.23}& \textbf{84.01} \\\hline
 \end{tabular}
-\caption{Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. ↑denotes higher the better, ↓denotes lower the better. The best results are in bold.}
+\caption{Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. ↑ denotes higher the better, ↓ denotes lower the better. The best results are in bold.}
 \end{table*}
 
-
+% Synapse 可视化 %
 \begin{figure*}
 \includegraphics[width=\linewidth]{Figures/Synapse.jpg}
 \caption{
-	Qualitative results on Synapse datasets are shown .The rectangular box highlights incorrectly segmented polyps by SOTA methods.
+	Qualitative results on Synapse datasets are shown .The red rectangular box highlights incorrectly segmented polyps by SOTA methods.
 } \label{Synapse}
 \end{figure*}
 
-
-\begin{table}
-	\small
-\begin{tabular}{l|c|ccc}\hline
-Methods & DICE  &RV &Myo& LV\\\hline
-
-TransUNet& 89.71& 86.67& 87.27& 95.18 \\
-SwinUNet& 90.00& 88.55& 85.62& 95.83 \\
-HiFormer& 90.12& 91.06& 84.54& 94.77 \\
-TransDeepLab& 90.41& 91.45& 84.54& 95.23 \\
-MT-UNet& 90.43& 86.64& 89.04& 95.62 \\
-MISSFormer& 90.86& 89.55& 88.04& 94.99 \\
-ParaTransCNN& 91.31& 92.76& 85.84& 95.34 \\
-TransCASCADE& 91.63& 90.25& 89.14& 95.50 \\
-VM-UNet& 92.12& 90.65& 89.68& 96.02 \\
-
-\hline
-MSL-UNet(ours) & 92 & 92 & 92 &92 \\\hline
-\end{tabular}
-\caption{\label{tab:widgets}Results on ACDC. DICE scores($\%$)are reported for individual organs. The best results are in bold.}
-\end{table}
 
 
 
@@ -282,16 +257,13 @@ The output of Strip Module, denoted as $Z$, will pass through a hadamard product
 
 
 
-\begin{figure*}
-\includegraphics[width=\linewidth]{Figures/ACDC.jpg}
-\caption{
-	Qualitative results on ACDC datasets are shown .Red represents the right ventricle, blue represents the left ventricle,and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented polyps by SOTA methods.
-} \label{ACDC}
-\end{figure*}
+
 
 
 
 \section{Experiments}
+
+In this section we present the details of implementation followed by a comparative analysis of our MSL-UNet against SOTA methods, including the performance of the complete model on the datasets and the details of the ablation study.
 
 \subsection{Implementation details}
 
@@ -308,20 +280,70 @@ We use both Syanpse and ACDC to train and test, with all of the images are resiz
 
 \subsection{Experimental Results}
 
-We compare our MSL-UNet with many state-of-the-art models on Syanpse and ACDC datasets. We choose models with different type of architecture. Pure CNN models represented by classic UNet. Pure Transformer models like Swin-UNet. Pure Mamba models like VM-UNet. Hybrid architecture models like TransUNet that uses CNN and Transformer. And other SOTA models such as PVT-CASCADE and so on. Notbly, we specially compare our MSL-UNet with VM-UNet, which similarly uses VSS Block as encoder, however, also as decoder. We believe Mamba is better used as encoder but not fitting as decoder, later results will show this.
+We compare our MSL-UNet with many state-of-the-art models on Syanpse and ACDC datasets. We choose models with different type of architecture. Pure CNN models represented by classic UNet. Pure Transformer models like Swin-UNet. Pure Mamba models like VM-UNet. Hybrid architecture models like TransUNet that uses CNN and Transformer. And other SOTA models such as TransCASCADE and so on. Notbly, we specially compare our MSL-UNet with VM-UNet, which similarly uses VSS Block as encoder, however, also as decoder. We believe Mamba is better used as encoder but not fitting as decoder, later results will show this.
 
 
 
 \subsubsection{Results on Synapse Multi-Organ Segmentation}
 
-Results of experiments on Synapse are presented in Table \textcolor{red}{1}. In SOTAs using different type of architecture, our MSL-UNet achieves the best performance, boasting a mean DICE score of 82.56 and a mean HD95 of 16.18, surpassing PVT-CASCADE and VM-UNet. We believe two facts help our model, one is Mamba encoder costs less resources, the other one is our MSL-UNet employs large-kernel and strip convolution that successfully enhance capacity of feature extraction. Figure \textcolonmonetary{red}{1} shows visual results of some SOTA models on Synapse segmentation. It's clear to see our MSL-UNet performs better in segmentation on tiny and linear organs, such as right kidney. Some SOTA models incorrectly predict, especially in right kindney, and other organs.
+Results of experiments on Synapse are presented in Table \textcolor{red}{1}. In SOTAs using different type of architecture, our MSL-UNet achieves the best performance, boasting a mean DICE score of 83.56 and a mean HD95 of 16.18, surpassing TransCASCADE and VM-UNet. We believe two facts help our model, one is Mamba encoder costs less resources but predicts more precisely, the other one is our MSL-UNet employs large-kernel and strip convolution that successfully enhance capacity of feature extraction. Figure \textcolonmonetary{red}{2} shows visual results of some SOTA models on Synapse segmentation. It's clear to see some SOTA models incorrectly predict. TransUNet, Swin-UNet, TransDeepLab and VM-UNet miss left kidney due to the tininess and slenderness. TransUNet and Swin-UNet even lost very big part of pancreas. The same problem is also did by TransDeepLab but not serious like the former two. Our MSL-UNet performs better, especially in segmentation on tiny and slender organs, such as both right and left kidney.
 
 
 
 
 \subsubsection{Results of ACDC Segmentation}
 
-Results of experiments on ACDC are presented in Table \textcolor{red}{2}. Our model achieves the best performance with a mean DICE score of 92.37. Figure \textcolonmonetary{red}{2} presents visual results of SOTA models performing on ACDC segmentation. It's clear that our MSL-UNet get a better performance than Swin-UNet, TransUNet and TransDeepLab. Swin-UNet predict incorrectly, missing the middle dark part of left ventricle. TransUNet similarly miss the left part. TransDeepLab miss parts of Myo and captures wrong extra parts of left ventricle. Additionally, VM-UNet predicts around correctly, however, not smoothly or precisely as our MSL-UNet.
+Results of experiments on ACDC are presented in Table \textcolor{red}{2}. Our model achieves the best performance with a mean DICE score of 92.81. Figure \textcolor{red}{2} presents visual results of SOTA models performing on ACDC segmentation. It's clear that our MSL-UNet get a better performance than Swin-UNet, TransUNet and TransDeepLab. Swin-UNet predict incorrectly, missing the middle part of left ventricle. TransUNet similarly but miss the left part. TransDeepLab miss parts of Myo and captures wrong extra parts for left ventricle. Additionally, VM-UNet  and TransCASCADE predict around correctly, however, not smoothly or precisely as our MSL-UNet.
+
+
+% ACDC可视化 %
+\begin{figure*}
+\includegraphics[width=\linewidth]{Figures/ACDC.jpg}
+\caption{
+	Qualitative results on ACDC datasets are shown .Red represents the right ventricle, blue represents the left ventricle,and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented polyps by SOTA methods.
+} \label{ACDC}
+\end{figure*}
+
+
+% ACDC 结果 %
+\begin{table}
+	\small
+\begin{tabular}{l|c|ccc}\hline
+Methods & DICE$\uparrow$  &RV &Myo& LV\\\hline
+TransUNet& 89.71& 86.67& 87.27& 95.18 \\
+SwinUNet& 90.00& 88.55& 85.62& 95.83 \\
+HiFormer& 90.12& 91.06& 84.54& 94.77 \\
+TransDeepLab& 90.41& 91.45& 84.54& 95.23 \\
+MT-UNet& 90.43& 86.64& 89.04& 95.62 \\
+MISSFormer& 90.86& 89.55& 88.04& 94.99 \\
+ParaTransCNN& 91.31& 92.76& 85.84& 95.34 \\
+VM-UNet& 91.63& 90.25& 89.14& 95.50 \\
+TransCASCADE& 92.12& 90.65& 89.68& 96.02 \\
+\hline
+MSL-UNet(ours) & \textbf{92.81} & \textbf{91.52} & \textbf{90.58} &\textbf{96.53} \\\hline
+\end{tabular}
+\caption{Results on ACDC. DICE scores($\%$)are reported for individual organs.↑ denotes higher the better. The best results are in bold.}
+\end{table}
+
+
+% 编码器消融实验 %
+\begin{table}
+\small
+\centering
+\begin{tabular}{l|cc|c}\hline
+\multirow{2}{*}{Methods} & \multicolumn{2}{c|}{Synapse} & ACDC \\\cline{2-4}
+& DICE$\uparrow$ & HD95$\downarrow$ & DICE$\uparrow$ \\\hline
+CNN-SL-UNet & 81.93 &18.27& 89.94\\
+Trans-SL-UNet & 82.76 & 16.62 & 91.05\\\hline
+MSL-UNet & \textbf{83.36} & \textbf{16.18} & \textbf{92.81} \\\hline
+\end{tabular}
+\caption{Results of how different encoders effect performance of segmentaion on Synapse and ACDC datasets. The best results are in bold.}
+\end{table}
+
+
+
+
+
 
 
 \subsection{Ablation Studies}
@@ -330,20 +352,57 @@ Results of experiments on ACDC are presented in Table \textcolor{red}{2}. Our mo
 
 \subsubsection{Effect of Mamba Encoder}
 
-We conduct a set of experiments on the Synapse datasets to understand eth effect of different encoders. We have applied pure CNN, pure Transformer as encoder to replace mamba encoder of our MSL-UNet. Table \textcolor{red}{NO.} shows the experimental results. 
+We conduct a set of experiments on the Synapse and ACDC datasets to understand the effect of different encoders. We have built up two extra version of MSL-UNet, CNN-SL-UNet and Trans-SL-UNet by replacing the encoder using CNN and Transformer. Table \textcolor{red}{3} shows the experimental results. Our MSL-UNet with vision mamba encoder have achieved the best scores on both the Synapse and ACDC datasets, surpassing CNN-SL-UNet and Trans-SL-UNet. Such results are completely in line with our expectations. The capability of CNNs in processing image features can no longer meet the surging demands, and their performance falls short when compared to Transformers and Mamba. However, Transformers also have limitations, as an excessive amount of data not only leads to a sharp increase in parameter counts but may also negatively impact segmentation results. In contrast, the Mamba encoder's ability to compress data in long-sequence tasks is likely the key factor that enables it to outperform Transformers.
 
 
+
+
+
+
+% SLGAG 消融实验 %
 \begin{table}
-\begin{tabular}{l|cc}\hline
-Methods & DICE  &RV \\\hline
-CNN-SL-Unet & 99 & 99	\\
-Transformer-SL-UNet & 99 &99 \\\hline
-MSL-UNet(Ours) & 99 & 99 \\\hline
-
-
+\small
+\centering
+\begin{tabular}{l|ccc|c}\hline
+\multirow{2}{*}{Methods} & \multicolumn{3}{c}{Synapse} & ACDC \\\cline{2-5}
+& DICE$\uparrow$ & HD95$\downarrow$ &Kid.(L) & DICE$\uparrow$ \\\hline
+No-SLGAG & 81.80 & 18.47 &83.97  & 90.79\\\hline
+MSL-UNet & \textbf{83.36} & \textbf{16.18} &\textbf{88.57}  & \textbf{92.81} \\\hline
 \end{tabular}
-\caption{\label{tab:widgets}Results on Syanpse of models using different encoders.}
+\caption{Results of Ablation Experiment of how Strip Large-kernel Group Attention Gate(SLGAG) effects on Synapse and ACDC datasets.}
 \end{table}
+
+
+% MA 卷积核策略 消融实验%
+\begin{table*}
+\small
+\centering
+\begin{tabular}{l|cccccccccc}\hline
+\multirow{2}{*}{Methods} & \multicolumn{10}{c}{Kernel Strategies} \\\cline{2-11}
+
+& [1] & [3] & [5] & [1,3] & [3,5] & [3,3,3] &[1,3,5]& [5,5,5] &[3,5,7] &[1,3,5,7]  \\\hline
+
+
+Synapse& 83.11& 82.93& 82.64& 83.02& 83.25& 82.73 & \textbf{83.36}& 82.98& 83.15& 83.20 \\
+ACDC & 91.14 &91.94 & 91.89 &92.28& 91.93& 92.35& \textbf{92.81}& 92.32& 92.12& 92.43\\
+\hline
+\end{tabular}
+\caption{Results of different depthwise convolution kernel strategies effect on Synapse and ACDC. In $[k_{1},k_{2},...,k_{n}]$, $k_{i}$ means size of each kernel, $\sum_{1}^{n}k_{i}$ means total number of the kernels. The best results are in bold.}
+\end{table*}
+
+
+
+
+\subsubsection{Effect of SLGAG}
+
+We have designed an experiment to observe the actual effectiveness of our SLGAG. Specifically, we remove the skip connections composed of SLGAG from MSL-UNet and use unprocessed skip connections instead, comparing this variant with our existing MSL-UNet on the Synapse and ACDC datasets. The experimental results are shown in Table \textcolor{red}{4}. The MSL-UNet with SLGAG achieves higher scores than the model without SLGAG, particularly demonstrating a significant lead in segmentation tasks involving small and elongated structures, such as the left kidney in the Synapse dataset. This indicates that the strip convolutions in our SLGAG can effectively capture relatively small and elongated features.
+
+
+\subsubsection{Effect of Convolution Kernel Size in MA}
+
+We have designed a series of experiments to evaluate the performance of the MSLCB module. Specifically, we employ different numbers and sizes of depthwise convolution kernels within the MA module, conducting experiments on the Synapse and ACDC datasets. We propose several strategies, including the use of a single $3 \times 3$ kernel, multiple $3 \times 3$ kernels, multiple $5 \times 5$ kernels, and a combination of multi-scale kernels. The experimental results are shown in Table \textcolor{red}{5}. Ultimately, our tests demonstrate that the integrated use of three kernels with sizes 1, 3, and 5 achieves the optimal segmentation results. We hypothesize that such multi-scale depthwise convolutions extract local and global features as uniformly as possible, thereby enhancing the efficiency of the process. Notably, increasing the kernel size may lead to a decline in segmentation performance; this is likely because excessively large kernels overlook local features, resulting in suboptimal performance in tasks that emphasize the segmentation of small objects.
+
+
 
 
 
@@ -363,7 +422,7 @@ In this paper, we have presented MSL-UNet, a new
 %\section*{Acknowledgements}
 %This work is supported in part by the NSF grant CNS 2007284, and in part by the iMAGiNE Consortium (https://imagine.utexas.edu/) 
 
-% 参考文献部分 - 由于篇幅原因，这里只包含部分参考文献格式示例
+
 \begin{thebibliography}{99}
 \bibitem{ronneberger2015unet}
 Ronneberger, O., Fischer, P., \& Brox, T. (2015). U-net: Convolutional networks for biomedical image segmentation. In \textit{International Conference on Medical Image Computing and Computer-Assisted Intervention} (pp. 234–241).
