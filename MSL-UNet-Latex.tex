@@ -59,11 +59,11 @@ As a challenger to the Transformer, Mamba has increasingly been adopted as a rep
 
 \section{Introduction}
 
-Automated segmentation of anatomical structures in medical images, particularly computed tomography (CT), is a foundational task for computer-aided diagnosis, treatment planning and quantitative analysis\cite{ronneberger2015unet,isensee2021nnu}. Convolutional Neural Networks (CNNs) long enjoyed a dominant position due to their exceptional feature extraction capabilities. The U-Net architecture, based on CNNs, further established a new design paradigm and became the cornerstone for numerous models. Over time, however, the inherent limitation of CNNs in modeling long-range dependencies increasingly hindered their application in medical practice. Researchers addressed this issue by introducing the self-attention mechanism, and built up high-performing models such as TransUNet\cite{chen2021transunet} and SwinUNet\cite{cao2021swinunet}. Nonetheless, the substantial computational overhead associated with self-attention imposes a significant burden on today's healthcare industry, creating a pressing demand for a new technological solution. This demand is satisfied by Vision Mamba, a novel architecture built upon selective state space models (SSMs)\cite{gu2023mamba,liu2024vmamba}.
+Automated segmentation of anatomical structures in medical images, particularly computed tomography (CT), is a foundational task for computer-aided diagnosis, treatment planning and quantitative analysis\cite{ronneberger2015unet,isensee2021nnu,milletari2016vnet}. Convolutional Neural Networks (CNNs) long enjoyed a dominant position due to their exceptional feature extraction capabilities. The U-Net architecture, based on CNNs, further established a new design paradigm and became the cornerstone for numerous models.\cite{ronneberger2015unet,3dunet,unet++,malunet,egeunet,mewunet,erdunet,Uncertainty-awareHierarchicalAggregationNetwork forMedicalImageSegmentation} Over time, however, the inherent limitation of CNNs in modeling long-range dependencies increasingly hindered their application in medical practice. Researchers addressed this issue by introducing the self-attention mechanism, and built up high-performing models such as TransUNet\cite{chen2021transunet}, SwinUNet\cite{cao2021swinunet} and UNTER\cite{hatamizadeh2022unetr}. Nonetheless, the substantial computational overhead associated with self-attention imposes a significant burden on today's healthcare industry, creating a pressing demand for a new technological solution. This demand is satisfied by Vision Mamba, a novel architecture built upon selective state space models (SSMs)\cite{gu2023mamba,liu2024vmamba,zhu2024vim}.
 
-Vision Mamba achieves competitive visual modeling capability with linear computational complexity, offering an efficient paradigm for capturing global context. Initial explorations have successfully integrated Mamba blocks as encoders in segmentation frameworks\cite{ruan2024vmunet}, demonstrating their potential. Nevertheless, a critical gap persists: The decoding layer depends on leveraging excellent contextual capabilities for generation, which is evidently not the inherent forte of Mamba. This explains why prevalent vision models built upon Mamba predominantly utilize it as the encoder, integrating it with a separate, non-Mamba decoder, as seen in architectures like Samba and MaIL.
+Vision Mamba achieves competitive visual modeling capability with linear computational complexity, offering an efficient paradigm for capturing global context. Initial explorations have successfully integrated Mamba blocks as encoders in segmentation frameworks\cite{ruan2024vmunet,ma2024umamba}, demonstrating their potential. Nevertheless, a critical gap persists: The decoding layer depends on leveraging excellent contextual capabilities for generation, which is evidently not the inherent forte of Mamba. This explains why prevalent vision models built upon Mamba predominantly utilize it as the encoder, integrating it with a separate, non-Mamba decoder, as seen in architectures like Samba\cite{Smamba} and MaIL\cite{MaIL}.
 
-To bridge this gap, we propose MSL-UNet, a novel hybrid architecture for efficient and accurate CT organ segmentation. Our core innovation lies in the first dedicated integration of a Vision Mamba-based encoder with a comprehensively enhanced convolutional decoder. Specifically, we construct the encoder using hierarchical Vision Mamba (VSS) blocks to efficiently build global feature representations. For the decoder, we introduce a new Multi-scale Strip Large-kernel Convolutional Block (MSLCB) and a Strip Large-Kernel Grouped Attention Gate (SLGAG) to replace the standard components.The MSLCB employs parallel strip convolutions and large-kernel depth-wise separable convolutions to capture anisotropic features and broad contextual information simultaneously. The SLGAG refines the fusion of encoder and decoder features through skip connections using the same enhanced convolutional philosophy, ensuring that crucial spatial details and directional cues are preserved during upsampling.
+To bridge this gap, we propose MSL-UNet, a novel hybrid architecture for efficient and accurate CT organ segmentation. Our core innovation lies in the first dedicated integration of a Vision Mamba-based encoder with a comprehensively enhanced convolutional decoder. Specifically, we construct the encoder using hierarchical Vision Mamba (VSS) blocks to efficiently build global feature representations. For the decoder, we introduce a new Multi-scale Strip Large-kernel Convolutional Block (MSLCB) and a Strip Large-Kernel Grouped Attention Gate (SLGAG) to replace the standard components. Inspired by the success of large-kernel designs in modern CNNs \cite{liu2022convnext} and the efficiency of strip convolutions in capturing anisotropic structures \cite{hou2020strippooling}, the MSLCB employs parallel strip convolutions and large-kernel depthwise separable convolutions to capture anisotropic features and broad contextual information simultaneously. The SLGAG refines the fusion of encoder and decoder features through skip connections using the same enhanced convolutional philosophy, ensuring that crucial spatial details and directional cues are preserved during upsampling.
 
 The principal contributions of this work are threefold: 
 \begin{enumerate}
@@ -79,15 +79,15 @@ In this section we give a brief review of related works in the realm of medical 
 
 \subsection{Medical image segmentation}
 
-The evolution of medical image segmentation has been fundamentally driven by one core challenge: the trade-off between efficient local feature extraction and effective global context modeling. Early vision architectures predominantly relied on Convolutional Neural Networks (CNNs), with the U-Net framework establishing the de facto standard. However, even if CNNs are highly efficient and inductive bias-friendly, the intrinsic locality of convolution operations still limits its ability to capture long-range dependencies, which decided that CNNs naturally do poor performance in response to more complex scences. 
+The evolution of medical image segmentation has been fundamentally driven by one core challenge: the trade-off between efficient local feature extraction and effective global context modeling. Early vision architectures predominantly relied on Convolutional Neural Networks (CNNs)\cite{ronneberger2015unet,3dunet,unet++,malunet,egeunet,mewunet,erdunet,Uncertainty-awareHierarchicalAggregationNetwork forMedicalImageSegmentation}, with the U-Net framework establishing the de facto standard. However, while Convolutional Neural Networks (CNNs) exhibit high computational efficiency and benefit from strong inductive biases—such as translation invariance and locality \cite{lecun2015deep, he2016resnet}—the intrinsic locality of standard convolution operations inherently restricts their capacity to model long-range spatial dependencies \cite{wang2018nonlocal}. Research has demonstrated that the effective receptive field of CNNs actually grows much slower than theoretically expected, often failing to encompass sufficient global context in deep layers \cite{luo2016erf}. Consequently, this structural constraint limits the performance of CNN-based models when processing complex scenes or anatomical structures with significant scale variations, where capturing global relational information is critical for resolving local ambiguities \cite{dosovitskiy2020vit, chen2021transunet}.
 
-To address this limitation of long-range dependency modeling, researchers introduced Vision Transformer (ViTs), which brought a paradigm shift to the field of computer vision. By replacing convolutions with self-attention mechanism, Transformer demonstrated remarkable success in capturing global contextual information across the entire image, which granted models capacity to feel an entire image. The advent of Transformer has spurred the development of numerous image segmentation models built upon the self-attention mechanism. TransFuse uses a parallel encoder to allow both CNN and ViT to process local and global features in the same time. Swin-UNet further enhanced efficiency and adaptability to dense prediction tasks through hierarchical feature maps and shifted window attention. DS-TransUNet can capture multi-scale feature from patches of varying sizes with a two parallel Swin Transformers decoder. 
+To address the limitations of long-range dependency modeling, researchers introduced Vision Transformers (ViTs) \cite{dosovitskiy2020vit}, which catalyzed a paradigm shift in computer vision. By replacing standard convolutions with the self-attention mechanism, Transformers demonstrate a remarkable capacity to model global contextual information, thereby enabling the network to perceive the entire image field comprehensively. The advent of the Transformer architecture has spurred the development of various high-performance medical image segmentation models. For instance, TransFuse \cite{zhang2021transfuse} employs a parallel-branch encoder to process local and global features simultaneously, effectively fusing CNN-based spatial details with Transformer-based global context. Swin-UNet \cite{cao2023swin} further enhances computational efficiency and adaptability for dense prediction tasks by utilizing hierarchical feature maps and shifted window attention. Additionally, DS-TransUNet \cite{lin2022ds} incorporates a dual-stream architecture to capture multi-scale representations from patches of varying sizes through parallel Swin Transformer blocks. Other notable contributions, such as SegFormer \cite{xie2021segformer} and Medical Transformer (MedT) \cite{valanarasu2021medical}, have further demonstrated the robustness of attention-driven frameworks in handling complex anatomical variations.
 
-However, this leap in modeling capacity came at a significant cost: the self-attention mechanism scales quadratically with input sequence length, leading to substantial computational and memory burdens, especially for high-resolution 2D or 3D medical images. That is why researchers start building hybrid architectures,which can slightly release performance burden. One seminal example is TransUNet that employs a CNN network as a feature map extractor in its encoder and then utilizes a Transformer to model global dependencies at the bottleneck. TransUNet also equips the model with capabilities for both feature extraction and global perception, yet it achieves higher performance than pure Transformer models. This clearly demonstrates the greater potential of hybrid architectures, which is precisely why many current vision models adopt such a design. Our model is also based on hybrid architecture.
+However, this enhancement in representation learning entails a significant drawback: the computational complexity of the self-attention mechanism scales quadratically with the input sequence length. This imposes a substantial memory and computational burden, particularly when processing high-resolution 2D or volumetric 3D medical images \cite{vaswani2017attention, hatamizadeh2022unetr}. To mitigate these constraints, researchers have increasingly turned toward hybrid architectures that balance efficiency with performance \cite{xie2021cotr}. A seminal example is TransUNet \cite{chen2021transunet}, which integrates a CNN-based encoder for robust local feature extraction and subsequently utilizes a Transformer at the bottleneck to model long-range global dependencies. By synergizing local spatial hierarchies with global contextual perception, TransUNet achieves superior performance compared to many pure Transformer-based counterparts. This paradigm underscores the profound potential of hybrid designs, which has become a prevalent strategy in contemporary medical vision frameworks. Consistent with this trend, our MSL-UNet is also built upon a hybrid architecture, aiming to optimize the trade-off between local precision and global context.
 
 \subsection{State Space Model}
 
-State Space Models (SSMs), rooted in classical control theory and signal processing, provide a powerful framework for modeling dynamical systems. They describe the evolution of a system's hidden state over time through linear differential (or difference) equations, offering a principled approach for processing continuous or discrete sequences. Traditionally, SSMs were valued for their strong theoretical foundations and ability to capture long-range dependencies with linear computational complexity, a stark contrast to the quadratic scaling of self-attention in Transformers.
+State Space Models (SSMs), deeply rooted in classical control theory and signal processing, provide a robust mathematical framework for modeling dynamical systems \cite{kalman1960new}. These models characterize the evolution of a system’s latent states through linear ordinary differential equations (ODEs) or their discrete-time counterparts, offering a principled methodology for processing both continuous and discrete sequences \cite{gu2021efficiently}. Historically, SSMs have been recognized for their rigorous theoretical foundations and their innate capacity to capture long-range dependencies with linear computational complexity—a property that stands in stark contrast to the quadratic scaling inherent in the self-attention mechanism of Transformers \cite{gu2023mamba, vaswani2017attention}. By effectively mapping input sequences to hidden representations through a recursive or convolutional formulation, SSMs have emerged as a highly efficient alternative for modeling extensive temporal or spatial contexts \cite{gu2020hippo, fu2022hungry}.
 
 The application of SSMs to deep learning gained significant momentum with the introduction of the Structured State Space Sequence model (S4). S4 combined HiPPO theory for long-range memory with a structured, linear time-invariant (LTI) formulation, enabling efficient training and demonstrating remarkable performance on long-sequence modeling tasks. However, a key limitation of standard S4 and similar LTI-SSMs is their time-invariant nature—their system parameters are fixed and independent of the input, which restricts their ability to perform context-dependent reasoning or selectively focus on relevant information within a sequence.
 
@@ -124,36 +124,36 @@ In this section, we will first introduce the overall architecture of MSL-UNet, f
 
 \subsection{MSL-UNet}
 
-As depicted in Figure \textcolor{red}{1} (a), the overall architecture of MSL-UNet is presented, which is based on U-Shape-Network. Specifically, MSL-UNet comprises a Patch Embedding layer as initial progressing, a four-stage VSS Blocks as encoder, a four-stage MSLCBs as decoder, a SH layer as final projection and SLGAGs as skip connections.
+As depicted in Figure \textcolor{red}{1} (a), the overall architecture of MSL-UNet is presented, which is based on U-Shape-Network. Specifically, MSL-UNet comprises a Patch Embedding layer as initial processing, four-stage VSS Blocks as the encoder, four-stage MSLCBs as the decoder, a SH layer as final projection and SLGAGs as skip connections.
 
-Firtsly, in the Patch Embedding layer input image is devided from 
+Firstly, in the Patch Embedding layer input image is divided from 
 $x=R^{H\times W\times 3} $
 into
 ${x}{'}\in {R}^{\frac{H}{4} \times \frac{W}{4} \times C}$, each patch is non-overlapping and the size is $4 \times 4$, subsequently mapping the dimensions of the image to C. Before entering the encoder layers, ${x}{'}$ will be normalized.
 
-For the encoder, we employ eight VSS Blocks in four stages where one stage pocesses two VSS Blocks, with a patch merging operation at the end of the first three statges to reduce the height and width of the input features while increasing the number of channels. The channel counts for each stage is [C, 2C, 4C, 8C].
+For the encoder, we employ eight VSS Blocks in four stages where one stage pocesses two VSS Blocks, with a patch merging operation at the end of the first three ges to reduce the height and width of the input features while increasing the number of channels. The channel counts for each stage are [C, 2C, 4C, 8C].
 
-Similarly, for the decoder we employ four MSLCBs to refine pyramid features extracted from the encoder via skip connections(i.e., x1,x2,x3,x4 in Figure1). Also, a patch expanding operation is used at the end of the last three MSLCBs. The channel counts for each stage is [8C, 4C, 2C, C].
+Similarly, for the decoder we employ four MSLCBs to refine pyramid features extracted from the encoder via skip connections(i.e., x1, x2, x3, x4 in Figure1). Also, a patch expanding operation is used at the end of the last three MSLCBs. The channel counts for each stage are [8C, 4C, 2C, C].
 
-We employ three SLGAGs for the skip connections. Features that get upsampled in patch expanding layer adds output from SLGAGs. 
+We employ three SLGAGs for the skip connections. Features that are upsampled in patch expanding layer are added to the output from SLGAGs. 
 
-Finally, the SH layer produces the final segmentaion output.
+Finally, the SH layer produces the final segmentation output.
 
 \subsection{VSS Block}
 
-As depicted in Figure \textcolor{red}{1} (b), the VSS Block, deriving from VMamba\cite{VMamba}, is the core module of our encoder. Firstly, the input patches $x$ will get a layer normalized, then split into two branches, where one branch does global modeling but losses local feature and the other branch preseves local feature.
+As depicted in Figure \textcolor{red}{1} (b), the VSS Block, derived from VMamba\cite{VMamba}, is the core module of our encoder. Firstly, the input patches $x$ are layer normalized, then split into two branches, where one branch performs global modeling but loses local features, and the other branch preserves local features.
 
-The front branch firstly process the input patches through a linear layer $LL(.)$ and a depth-wise separable convolution $DWC(.)$, with a activation function $R(.)$ at the end. We then feed the patches into the $SS2D(.)$ for furture feature extraction. Finally, the features get a layer normalized $LN(.)$ and await output patches from the other branch.
+The front branch firstly processes the input patches through a linear layer $LL(.)$ and a depthwise separable convolution $DWC(.)$, with an activation function $R(.)$ at the end. We then feed the patches into $SS2D(.)$ for future feature extraction. Finally, the features are layer normalized by $LN(.)$ and await output patches from the other branch.
 
-As the front branch losses local features through a global modeling, we preseve local features in the other branch where patches will only undergoes a linear layer $LL(.)$ and a activation function $ReLU(.)$.
+As the front branch loses local features through global modeling, we preserve local features in the other branch, where patches will only undergo a linear layer $LL(.)$ and an activation function $ReLU(.)$.
 
-Both of the output from two branches then get hadamard producted after one more linear layer $LL(.)$. Finally, the merged features get a bit-wise addition with initial input $x$.
+The outputs from both branches then undergo a bit-wise multiplication(Hadamard Product) after passing through another linear layer $LL(.)$. Finally, the merged features are added bit-wise to the initial input $x$.
 
 The $VSSBlock(.)$ can be formulated as in Equation \textcolor{red}{1}:
 \begin{tiny} 
 \begin{align} \nonumber
-  VSSBlock(x) = x + \\
-  LL(LN(SS2D(R(DWC(LL(LN(x)))))) \otimes R(LL(LN(x))))
+  VSSBlock(x) = x + 
+  LL(LN(SS2D(R(DWC(LL(LN(x))))))\\ \otimes R(LL(LN(x))))
 \end{align} 
 \end{tiny}
 
@@ -161,21 +161,24 @@ The $VSSBlock(.)$ can be formulated as in Equation \textcolor{red}{1}:
 
 \subsection{Strip Large-kernel grouped attention gate (SLGAG)}
 
-We introduce a new strip large-kernel group attention gate(SLGAG) to get higher activation of relevant features and suppression of irrelevant ones. As shown in Figure \textcolor{red}{1} (c), SLGAG accepts two inputs $g$ and $x$ separately from a patch expanding layer in the decoder and a patch merging layer that lies one level higher than the former one, both of the input have same size to guarantee bit-wise addition opeates normally. We process $g$ and $x$ with $3 \times 3$ convolution $Cnv_{3\times 3}(.)$ and strip convolution $SC(.)$ to get feature from different dimensions. These convolved features then get batch normalized $BN(.)$ and merged through bit-wise addition. The merged feature map is activated in ReLU layer $R(.)$. Afterward, we apply a $1 \times 1$ convolution block $Cnv_{1 \times 1}(.)$ to get a singal-channel feature map. Then we exsuccessively pass the singal-channel feature map through a $BN(.)$ and a activation function $\sigma(.)$ to yield the attention coefficients. Finally, we apply hadamard product to $x$ and the activated
-singal-channel feature map, producting attention-gated feature. 
+We introduce a new strip large-kernel group attention gate (SLGAG) to enhance the activation of relevant features while suppressing irrelevant ones. 
+
+As shown in Figure \textcolor{red}{1} (c), SLGAG accepts two inputs, $g$ and $x$, from a patch expanding layer in the decoder and a patch merging layer that is one level higher than the patch expanding layer; both inputs have the same size to ensure bit-wise addition operates correctly. We process $g$ and $x$ using a $3 \times 3$ convolution ($Cnv_{3\times 3}(\cdot)$) and a strip convolution ($SC(\cdot)$) to extract features from different dimensions. These convolved features are then batch-normalized using $BN(\cdot)$ and merged via bit-wise addition. The merged feature map is activated by a ReLU layer $R(\cdot)$. Afterward, we apply a $1 \times 1$ convolution ($Cnv_{1\times 1}(\cdot)$) to obtain a single-channel feature map. Then we successively pass the single-channel feature map through a $BN(\cdot)$ and an activation function $\sigma(\cdot)$ to yield the attention coefficients. 
+
+Finally, we perform bit-wise multiplication (Hadamard product) of $x$ and the activated single-channel feature map, producing the attention-gated feature.
 
 The $SLGAG(.)$ can be formulated as in Equation \textcolor{red}{2}: 
 \begin{tiny}
 \begin{align}\nonumber
-	SLGAG(g,x) = x \otimes \sigma(BN(Cnv_{1\times 1}(R(SC(g) + \\BN(Cnv_{3\times 3}(g)) + SC(x) + BN(Cnv_{3\times 3}(x))))))
+	SLGAG(g,x) = x \otimes \sigma(BN(Cnv_{1\times 1}(R(SC(g) + BN(Cnv_{3\times 3}(g)) + \\SC(x) + BN(Cnv_{3\times 3}(x))))))
 \end{align}
 \end{tiny}
 
 \subsection{Multi-scale Strip Large-kernel convolutional block (MSLCB)}
 
-We introduce a new multi-scale strip large-kernel convolutional block as depicted in Figure \textcolor{red}{1} (d). Our MSLCB consits of a channel attention block (CA) that finds most relevant channel, a spatial attention block (SA) that find the most relevant parts  feature map, a strip convolution block (SC) that enhances feature extraction capacity for tiny details, and a multi-scale attention block (MA) that enhances contextual relationships among all of the features.
+We introduce a new multi-scale strip large-kernel convolutional block as depicted in Figure \textcolor{red}{1} (d). Our MSLCB contains a channel attention block (CA) that finds out most relevant channel, a spatial attention block (SA) that find out the most relevant feature maps, a strip convolution block (SC) that enhances feature extraction capacity for tiny details, and a multi-scale attention block (MA) that enhances contextual relationships among all of the features.
 
-\textbf{Channel Attention Block (CA)}: As depicted in Figure \textcolor{red}{1} (f), the input patches $x$ firtsly enter CA then split into two branches where $x$ gets separately adapted max poooling $AMP(.)$ and adapted average pooling $AAP(.)$ to extract the most significant feature of the entire feature map per channel. For each pooled feature maps, we apply two point-wise convolution $PWC_{C/r}(.)$ (i.e., r = 16) and $PWC_{C}(.)$ separately reduce and recover the number of channels, with a activation function $R(.)$ between them. Afterward, both of the pooled feature maps get a bit-wise addition before a activation function $\sigma(.)$. Finally, we apply a hadamard producting to the pooled feature maps and initial input $x$.
+\textbf{Channel Attention Block (CA)}: As depicted in Figure \textcolor{red}{1} (f), the input patches $x$ first enter the channel attention (CA) module and are then split into two branches, where $x$ undergoes adaptive max pooling ($AMP(\cdot)$) and adaptive average pooling ($AAP(\cdot)$) respectively, to extract the most significant feature per channel from the entire feature map. For each pooled feature map, we apply two point-wise convolutions: $PWC_{C/r}(\cdot)$ (with $r=16$) to reduce the number of channels and $PWC_C(\cdot)$ to recover it, with an activation function $R(\cdot)$ in between. The two pooled feature maps are then combined via bit-wise addition before passing through an activation function $\sigma(\cdot)$. Finally, we perform bit-wise multiplication (Hadamard product) between the combined feature map and the initial input $x$.
 
 The $CA(.)$ can be formulated as in Equation \textcolor{red}{3}:
 \begin{tiny}   
@@ -185,7 +188,7 @@ The $CA(.)$ can be formulated as in Equation \textcolor{red}{3}:
 \end{align}
 \end{tiny}
 
-\textbf{Spatial Attention Block (SA)}: As depicted in Figure \textcolor{red}{1} (g), similarly designed as CA, the input patches $x$ firstly get max pooling $CH_{max}(.)$ and average pooling $CH_{average}(.)$ in two different branches along the channel dimension to pay attention to local features, then get contacted before entering a large-kernel convolution layer $LKC(.)$ (i.e., size is $7\times 7$ and padding is 3), where local contextual relationships among the features will get enhanced. Finally, the contacted feature maps will undergo into an activation function $\sigma(.)$ and be hadamard producted with initial input $x$.
+\textbf{Spatial Attention Block (SA)}: As depicted in Figure \textcolor{red}{1} (g), following a design similar to that of the CA module, the input patches $x$ first undergo max pooling ($CH_{max}(\cdot)$) and average pooling ($CH_{average}(\cdot)$) in two separate branches along the channel dimension to capture local features. The outputs are then concatenated before being fed into a large-kernel convolution layer $LKC(\cdot)$ (with kernel size $7\times7$ and padding 3), where local contextual relationships among the features are enhanced. Finally, the concatenated feature maps are passed through an activation function $\sigma(\cdot)$ and bit-wise multiplied (Hadamard product) with the initial input $x$.
 
 The $SA(.)$ can be formulated as in Equation \textcolor{red}{4}:
 \begin{tiny}   
@@ -194,7 +197,7 @@ The $SA(.)$ can be formulated as in Equation \textcolor{red}{4}:
 \end{align}
 \end{tiny}
 
-\textbf{Multi-scale Attention Block (MA)}: As depicted in Figure \textcolor{red}{1} (h), the input patches $x$ firstly get a channel number expanding (i.e., expanding factor is 2) in a point-wise convolution $PWC_{C\times 2}(.)$, followed by a batch normalization $BN(.)$ and a activation function $R6(.)$. Then the patches are separately passed through three depth-wise separable convolution $DWC(.)$ layers (i.e., the number and size of convolution kernel can be changed)separately uses different size convolution kernels in order to capture both multi-scale and multi-resolution contexts. After feature from different channel getting summed, we use a channel shuffle $CSF(.)$ layer to incorporate relationships among channels. The shuffled feature maps then undergo into another $PWC_{C}(.)$ where number of channels get recovered, with a batch normalization layer $BN(.)$ after that. Finally, normalized feature maps get a bit-wise addition with initial input $x$.
+\textbf{Multi-scale Attention Block (MA)}: As depicted in Figure \textcolor{red}{1} (h), the input patches $x$ first undergo channel expansion via a point-wise convolution $PWC_{C\times 2}(\cdot)$ (with an expansion factor of 2), followed by batch normalization $BN(\cdot)$ and an activation function $R6(\cdot)$ (ReLU6). Then, the patches are separately passed through three depthwise separable convolution layers ($DWC(\cdot)$) with different kernel sizes to capture multi-scale and multi-resolution contexts (the number and size of the kernels are configurable). After the features from different channels are summed, we apply a channel shuffle layer $CSF(\cdot)$ to enhance cross-channel relationships. The shuffled feature maps are then passed through another point-wise convolution $PWC_C(\cdot)$ to recover the original number of channels, followed by batch normalization $BN(\cdot)$. Finally, the normalized feature maps are added bit-wise to the initial input $x$.
 
 The $MA(.)$ can be formulated as in Equation \textcolor{red}{5}:
 \begin{tiny}   
@@ -246,20 +249,30 @@ MSL-UNet(ours) & \textbf{83.36}& \textbf{16.18}& \textbf{88.43}& \textbf{70.94}&
 
 \subsection{Strip Convolution Block (SC)}
 
-Strip Convolution Block (SC) is designed as shown in Figure \textcolor{red}{1} (e). Given input $x$ will firstly pass through a Norm Layer, a Full connect Layer and a activation function GeLU, then where the normalized patches $x^{'}$ next enter is Strip Module, which is the kernel part of SC depicted in Figure \textcolor{red}{1} (j).
+Strip Convolution Block (SC) is integrated into our MSL-UNet to address the limitations of traditional square-kernel convolutions in capturing elongated and curvilinear anatomical structures.
 
-In Strip Module, a depth-wise convolution with large kernel(i.e., $5 \times 5$) is first applied to extract local contextual features. Then two sequential depth-wise convolution of strip-shaped kernels are used to better capture objects of high aspect rations, with a point-wise convolution followed.
+SC is designed as shown in Figure \textcolor{red}{1} (e). The input $x$ first passes through a layer normalization, a fully connected layer, and a GELU activation function. The normalized patches $x'$ then enter the Strip Module, which is the core part of SC depicted in Figure \textcolor{red}{1} (j).
 
-The output of Strip Module, denoted as $Z$, will pass through a hadamard producting with $x^{'}$, yielding $Z^{'}$, which then pass through a bit-wise addition with $x$ after a full connection layer. Afterward, full connected output will be applied a bit-wise addition again with $x$, yielding $Y$. In the next normalized $Y$ undergoes into a feed-forward network where features get refined and enhanced, with a bit-wise addition with normalized $Y$ after that, yielding final output $SC(X)$.
+In the Strip Module, a depthwise convolution with a large kernel (i.e., $5 \times 5$) is first applied to extract local contextual features. Then, two sequential depthwise convolutions with strip-shaped kernels (i.e., kernel size is $1 \times N$ or $N \times 1$) are used to better capture objects of high aspect ratios, followed by a pointwise convolution.
+
+The output of the Strip Module, denoted as $Z$, undergoes an bit-wise multiplication (Hadamard product) with $x'$, yielding $Z'$, which then passes through an bit-wise addition with $x$ after a fully connected layer. Subsequently, the fully connected output is added bit-wise to $x$ again, producing $Y$. Next, the normalized $Y$ is passed through a feed-forward network where features are refined and enhanced, followed by another bit-wise addition with the normalized $Y$, yielding the final output $SC(X)$.
 
 
 \subsection{Loss Function}
 
+To optimize the MSL-UNet for high-precision medical image segmentation, we employ a hybrid loss function, denoted as $L_{total}$, which synergistically combines Soft Dice Loss and Focal Loss.
 
+The rationale behind this design is two-fold. First, Soft Dice Loss is utilized to maximize the spatial overlap between the segmented masks and the ground truth, effectively mitigating the issues caused by the severe class imbalance inherent in medical datasets (e.g., small lesion areas versus large background regions). Second, to address the challenge of hard-to-classify pixels near anatomical boundaries, we integrate Focal Loss. By introducing a modulating factor $(1 - p_t)^\gamma$, Focal Loss reshapes the standard cross-entropy loss to down-weight easy examples and focus the model's learning capacity on ambiguous regions and sparse foreground pixels.
 
+The objective function is formulated as in Equation \textcolor{red}{6}:
 
+\begin{tiny}   
+\begin{align}
+  L_{total} = \lambda_{dice} L_{Dice} + \lambda_{focal} L_{Focal}
+\end{align}
+\end{tiny}
 
-
+where $\lambda_{dice}$ and $\lambda_{focal}$ are hyper-parameters representing the weighting coefficients for each component. In our experiments, we empirically set $\lambda_{dice} = 1$ and $\lambda_{focal} = 1$ to maintain a balanced gradient flow throughout the backpropagation process, ensuring both global structural consistency and local boundary sharpness.
 
 \section{Experiments}
 
@@ -407,10 +420,6 @@ We have designed a series of experiments to evaluate the performance of the MSLC
 
 
 
-
-
-
-
 \section{Conclusions}
 
 In this paper, we have presented MSL-UNet, a new 
@@ -424,24 +433,105 @@ In this paper, we have presented MSL-UNet, a new
 
 
 \begin{thebibliography}{99}
+
+% 1.1
 \bibitem{ronneberger2015unet}
 Ronneberger, O., Fischer, P., \& Brox, T. (2015). U-net: Convolutional networks for biomedical image segmentation. In \textit{International Conference on Medical Image Computing and Computer-Assisted Intervention} (pp. 234–241).
+\bibitem{milletari2016vnet}
+ Milletari, F., Navab, N., \& Ahmadi, S. A. (2016). V-Net: Fully convolutional neural networks for volumetric medical image segmentation. In 2016 fourth international conference on 3D vision (3DV) (pp. 565-571). IEEE. 
 \bibitem{isensee2021nnu}
 Isensee, F., Jaeger, P. F., Kohl, S. A., Petersen, J., \& Maier-Hein, K. H. (2021). nnU-Net: a self-configuring method for deep learning-based biomedical image segmentation. \textit{Nature Methods}, 18(2), 203–211.
+\bibitem{3dunet}
+¨ O. C.ic,ek, A. Abdulkadir, S. S. Lienkamp, T. Brox, and O. Ronneberger,
+“3d u-net: learning dense volumetric segmentation from sparse anno
+tation,” in International conference on medical image computing and
+computer-assisted intervention. Springer, 2016, pp. 424-432.
+\bibitem{unet++}
+Z. Zhou, M. M. Rahman Siddiquee, N. Tajbakhsh, and J. Liang,
+“Unet++: A nested u-net architecture for medical image segmentation,”
+in Deep learning in medical image analysis and multimodal learning
+for clinical decision support. Springer, 2018, pp. 3-11.
+\bibitem{malunet} J. Ruan, S. Xiang, M. Xie, T. Liu, and Y. Fu, “Malunet: A multi-attention
+and light-weight unet for skin lesion segmentation,” in 2022 IEEE
+International Conference on Bioinformatics and Biomedicine (BIBM).
+IEEE, 2022, pp. 1150-1156.
+\bibitem{egeunet} J. Ruan, M. Xie, J. Gao, T. Liu, and Y. Fu, “Ege-unet: an efficient group
+enhanced unet for skin lesion segmentation,” in International Conference
+on Medical Image Computing and Computer-Assisted Intervention.
+Springer, 2023, pp. 481-490.
+\bibitem{mewunet} J. Ruan, M. Xie, S. Xiang, T. Liu, and Y. Fu, “Mew-unet: Multi
+axis representation learning in frequency domain for medical image
+segmentation,” arXiv preprint arXiv:2210.14007, 2022.
+JOURNAL OF LATEX CLASS FILES, VOL. 14, NO. 8, AUGUST 2021
+9
+\bibitem{erdunet} H. Li, D.-H. Zhai, and Y. Xia, “Erdunet: An efficient residual double
+coding unet for medical image segmentation,” IEEE Transactions on
+Circuits and Systems for Video Technology, 2023.
+\bibitem{Uncertainty-awareHierarchicalAggregationNetwork forMedicalImageSegmentation} T. Zhou, Y. Zhou, G. Li, G. Chen, and J. Shen, “Uncertainty-aware
+hierarchical aggregation network for medical image segmentation,” IEEE
+Transactions on Circuits and Systems for Video Technology, 2024.
 \bibitem{chen2021transunet}
 Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., … \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. \textit{arXiv preprint arXiv:2102.04306}.
 \bibitem{cao2021swinunet}
 Cao, H., Wang, Y., Chen, J., Jiang, D., Zhang, X., Tian, Q., \& Wang, M. (2021). Swin-Unet: Unet-like pure transformer for medical image segmentation. \textit{arXiv preprint arXiv:2105.05537}.
+\bibitem{hatamizadeh2022unetr}: Hatamizadeh, A., Tang, Y., Nath, V., Zeghal, D., Entezari, N., Kingsley, S., ... \& Xu, D. (2022). UNETR: Transformers for 3D medical image segmentation. In Proceedings of the IEEE/CVF winter conference on applications of computer vision (pp. 574-584).
+% 1：2
 \bibitem{gu2023mamba}
 Gu, A., \& Dao, T. (2023). Mamba: Linear-time sequence modeling with selective state spaces. \textit{arXiv preprint arXiv:2312.00752}.
 \bibitem{liu2024vmamba}
 Liu, Y., Tian, Y., Zhao, Y., Yu, H., Xie, L., Wang, Y., … \& Ye, Q. (2024). VMamba: Visual State Space Model. \textit{arXiv preprint arXiv:2401.10166}.
+\bibitem{zhu2024vim}Zhu, L., Liao, B., Zhang, Q., Wang, X., Liu, W., \& Wang, X. (2024). Vision Mamba: Efficient visual representation learning with bidirectional state space model. arXiv preprint arXiv:2401.09417.
+%1.3
 \bibitem{ruan2024vmunet}
 Ruan, J., \& Xiang, S. (2024). VM-UNet: Vision Mamba UNet for medical image segmentation. \textit{arXiv preprint arXiv:2402.02491}.
-\bibitem{VMamba}
-Y. Liu, Y. Tian, Y. Zhao, H. Yu, L. Xie, Y. Wang, Q. Ye, and Y. Liu,
-“Vmamba: Visual state space model,” arXiv preprint arXiv:2401.10166,
-2024.
+\bibitem{ma2024umamba}Ma, J., Li, F., \& Wang, B. (2024). U-Mamba: Enhancing long-range dependency for biomedical image segmentation. arXiv preprint arXiv:2401.04722.
+\bibitem{Smamba}
+Ren, L., Liu, Y., Lu, Y., Shen, Y., Liang, C., \& Chen, W. (2024). Samba: Simple Hybrid State Space Models for Efficient Unlimited Context Language Modeling. \textit{ ArXiv, abs/2406.07522}.
+\bibitem{MaIL}
+Jia, X., Wang, Q., Donat, A., Xing, B., Li, G., Zhou, H., Celik, O., Blessing, D., Lioutikov, R. \&amp; Neumann, G.. (2025). MaIL: Improving Imitation Learning with Selective State Space Models. 
+\bibitem{liu2022convnext}Liu, Z., Mao, H., Wu, C. Y., Feichtenhofer, C., Darrell, T., \& Xie, S. (2022). A convnet for the 2020s. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 11976-11986). 
+\bibitem{hou2020strippooling} Hou, Q., Zhang, L., Cheng, M. M., \& Feng, J. (2020). Strip pooling: Rethinking spatial pooling for scene parsing. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 4003-4012). 
+
+%====2=====
+
+%2.1
+
+\bibitem{lecun2015deep}LeCun, Y., Bengio, Y., \& Hinton, G. (2015). Deep learning. Nature, 521(7553), 436-444.
+\bibitem{he2016resnet}He, K., Zhang, X., Ren, S., \& Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR) (pp. 770-778).
+
+\bibitem{wang2018nonlocal}Wang, X., Girshick, R., Gupta, A., \& He, K. (2018). Non-local neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR) (pp. 7794-7803). 
+\bibitem{luo2016erf} Luo, W., Li, Y., Urtasun, R., \& Zemel, R. (2016). Understanding the effective receptive field in deep convolutional networks. Advances in neural information processing systems (NeurIPS), 29. 
+
+\bibitem{dosovitskiy2020vit}Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... \& Houlsby, N. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (ICLR 2021). 
+\bibitem{chen2021transunet}Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., ... \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. arXiv preprint arXiv:2102.04306. 
+
+\bibitem{dosovitskiy2020vit} Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... \& Houlsby, N. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (Published at ICLR 2021).
+\bibitem{zhang2021transfuse} Zhang, Y., Liu, H., \& Hu, Q. (2021). TransFuse: Fusing transformers and CNNs for medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 14-24). Springer, Cham.
+\bibitem{cao2023swin} Cao, H., Wang, Y., Chen, J., Jiang, D., Zhang, X., Tian, Q., \& Wang, M. (2023). Swin-Unet: Unet-like pure transformer for medical image segmentation. In Computer Vision–ECCV 2022 Workshops (pp. 205-218). Springer, Cham.
+\bibitem{lin2022ds} Lin, A., Chen, B., Xu, J., Zhang, Z., Lu, G., \& Zhang, D. (2022). DS-TransUNet: Dual Swin Transformer U-Net for medical image segmentation. IEEE Transactions on Instrumentation and Measurement, 71, 1-15.
+\bibitem{xie2021segformer} Xie, E., Wang, W., Yu, Z., Anandkumar, A., Alvarez, J. M., \& Ping, L. (2021). SegFormer: Simple and efficient design for semantic segmentation with transformers. Advances in Neural Information Processing Systems (NeurIPS), 34, 12077-12090.
+\bibitem{valanarasu2021medical}Valanarasu, J. M. J., Oza, P., Hacihaliloglu, I., \& Patel, V. M. (2021). Medical transformer: Gated axial-attention for medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 36-46). Springer, Cham.
+
+
+\bibitem{vaswani2017attention} Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... \& Polosukhin, I. (2017). Attention is all you need. Advances in Neural Information Processing Systems (NeurIPS), 30. 
+\bibitem{chen2021transunet} Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., ... \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. arXiv preprint arXiv:2102.04306. 
+\bibitem{hatamizadeh2022unetr} Hatamizadeh, A., Tang, Y., Nath, V., Zeghal, D., Entezari, N., Kingsley, S., ... \& Xu, D. (2022). UNETR: Transformers for 3D medical image segmentation. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) (pp. 574-584). 
+\bibitem{xie2021cotr}Xie, Y., Zhang, J., Shen, C., \& Xia, Y. (2021). CoTr: Efficiently bridging CNN and transformer for 3D medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 171-180). Springer, Cham. 
+\bibitem{zhou2021nnformer}: Zhou, H. Y., Guo, J., Zhang, Y., Yu, X., Wang, L., \& Yu, Y. (2021). nnFormer: Interleaved transformer for volumetric segmentation. arXiv preprint arXiv:2109.03201. 
+
+%2.2
+\bibitem{kalman1960new} 
+Kalman, R. E. (1960). A new approach to linear filtering and prediction problems. \textit{Journal of Basic Engineering}, 82(1), 35-45.
+\bibitem{gu2020hippo} 
+Gu, A., Dao, T., Ermon, S., Atzmon, A., \& Re, C. (2020). Hippo: Recurrent memory with optimal polynomial projections. \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 33, 1474-1487.
+\bibitem{gu2021efficiently} 
+Gu, A., Goel, K., \& Re, C. (2021). Efficiently modeling long sequences with structured state spaces. \textit{arXiv preprint arXiv:2111.00396} (Published at ICLR 2022).
+\bibitem{fu2022hungry} 
+Fu, D. Y., Dao, T., Saab, K. K., Thomas, A. W., Rudra, A., \& Re, C. (2022). Hungry hungry hippos: Towards language modeling with state space models. \textit{arXiv preprint arXiv:2212.14052} (Published at ICLR 2023).
+\bibitem{gu2023mamba} 
+Gu, A., \& Dao, T. (2023). Mamba: Linear-time sequence modeling with selective state spaces. \textit{arXiv preprint arXiv:2312.00752}.
+
+
 \end{thebibliography}
 % 附录
 %\onecolumn

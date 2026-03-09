@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  5 MAR 2026 21:44
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  9 MAR 2026 16:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -471,7 +471,23 @@ Package fontspec Info:
 (fontspec)             <->"Times New
 (fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 
- (./MSL-UNet-Latex.aux)
+ (./MSL-UNet-Latex.aux
+
+LaTeX Warning: Label `chen2021transunet' multiply defined.
+
+
+LaTeX Warning: Label `dosovitskiy2020vit' multiply defined.
+
+
+LaTeX Warning: Label `chen2021transunet' multiply defined.
+
+
+LaTeX Warning: Label `hatamizadeh2022unetr' multiply defined.
+
+
+LaTeX Warning: Label `gu2023mamba' multiply defined.
+
+)
 \openout1 = `MSL-UNet-Latex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
@@ -610,21 +626,6 @@ Underfull \hbox (badness 2318) in paragraph at lines 62--63
  []
 
 
-Underfull \hbox (badness 1014) in paragraph at lines 62--63
-\TU/TimesNewRoman(0)/m/n/10 (CT), is a foundational task for computer-aided di-
- []
-
-
-
-
-Underfull \hbox (badness 1521) in paragraph at lines 66--67
-\TU/TimesNewRoman(0)/m/n/10 a comprehensively enhanced convolutional decoder.
- []
-
-
-Underfull \hbox (badness 1173) in paragraph at lines 66--67
-\TU/TimesNewRoman(0)/m/n/10 a new Multi-scale Strip Large-kernel Convolutional
- []
 
 
 
@@ -637,49 +638,65 @@ Underfull \hbox (badness 1412) in paragraph at lines 72--73
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 84--85
-\TU/TimesNewRoman(0)/m/n/10 self-attention mechanism, Transformer demonstrated
+Underfull \hbox (badness 1990) in paragraph at lines 84--85
+\TU/TimesNewRoman(0)/m/n/10 the self-attention mechanism, Transformers demon-
  []
 
 
 
+
+Underfull \hbox (badness 3449) in paragraph at lines 86--87
+\TU/TimesNewRoman(0)/m/n/10 ing entails a significant drawback: the computa-
+ []
+
+
+
+[2]
 File: Figures/MSL-UNet.jpg Graphic file (type bmp)
 <Figures/MSL-UNet.jpg>
 
 
-[2]
-Underfull \vbox (badness 1400) has occurred while \output is active []
+
+LaTeX Warning: Citation `VMamba' on page 3 undefined on input line 144.
 
 
-
-
-Underfull \hbox (badness 1859) in paragraph at lines 150--151
-[]\TU/TimesNewRoman(0)/m/n/10 Both of the output from two branches then get
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
+[]\TU/TimesNewRoman(0)/m/n/10 Finally, we perform bit-wise multiplication
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1406) in paragraph at lines 168--169
+\TU/TimesNewRoman(0)/m/n/10 (Hadamard product) of $\OML/cmm/m/it/10 x$ \TU/TimesNewRoman(0)/m/n/10 and the activated single-
+ []
 
 
+Underfull \hbox (badness 1953) in paragraph at lines 168--169
+\TU/TimesNewRoman(0)/m/n/10 channel feature map, producing the attention-gated
+ []
 
-[3]
-Underfull \hbox (badness 1014) in paragraph at lines 176--177
+
+Underfull \hbox (badness 1014) in paragraph at lines 179--180
 \TU/TimesNewRoman(0)/m/n/10 volutional block as depicted in Figure []1[] (d). Our
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 178--179
-\TU/TimesNewRoman(0)/m/n/10 max poooling $\OML/cmm/m/it/10 AMP\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 )$ \TU/TimesNewRoman(0)/m/n/10 and adapted average pool-
+
+[3]
+
+
+Underfull \hbox (badness 1024) in paragraph at lines 200--201
+\TU/TimesNewRoman(0)/m/n/10 (ReLU6). Then, the patches are separately passed
  []
 
 
 
+[4]
 File: Figures/Synapse.jpg Graphic file (type bmp)
 <Figures/Synapse.jpg>
 
-
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1558) in paragraph at lines 252--253
+\TU/TimesNewRoman(0)/m/n/10 MSL-UNet to address the limitations of traditional
+ []
 
 
 
@@ -691,36 +708,160 @@ File: Figures/ACDC.jpg Graphic file (type bmp)
 
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 390--390
+
+[6]
+Underfull \hbox (badness 1400) in paragraph at lines 403--403
 []\TU/TimesNewRoman(0)/m/n/10 Table 5: |Results of different depthwise convolution kernel strategies effect on Synapse and ACDC. In
  []
 
 
+Underfull \vbox (badness 1603) has occurred while \output is active []
 
-[6]
-Underfull \hbox (badness 1308) in paragraph at lines 430--431
+
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 441--442
+[]\TU/TimesNewRoman(0)/m/n/10 Milletari, F., Navab, N., & Ahmadi, S. A.
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 443--444
 \TU/TimesNewRoman(0)/m/n/10 J., & Maier-Hein, K. H. (2021). nnU-Net: a
  []
 
 
 
+[7]
+Underfull \hbox (badness 2564) in paragraph at lines 454--458
+[]\TU/TimesNewRoman(0)/m/n/10 J. Ruan, S. Xiang, M. Xie, T. Liu, and Y.
+ []
 
 
-[7] (./MSL-UNet-Latex.aux)
+Underfull \hbox (badness 1117) in paragraph at lines 458--462
+[]\TU/TimesNewRoman(0)/m/n/10 J. Ruan, M. Xie, J. Gao, T. Liu, and Y. Fu,
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 470--473
+\TU/TimesNewRoman(0)/m/n/10 work for medical image segmentation,” IEEE
+ []
+
+
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 483--485
+\TU/TimesNewRoman(0)/m/n/10 representation learning with bidirectional state
+ []
+
+
+Underfull \hbox (badness 1062) in paragraph at lines 487--488
+\TU/TimesNewRoman(0)/m/n/10 Enhancing long-range dependency for biomed-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+\TU/TimesNewRoman(0)/m/n/10 ical image segmentation. arXiv preprint
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 489--490
+\TU/TimesNewRoman(0)/m/n/10 Space Models for Efficient Unlimited Context
+ []
+
+
+Underfull \hbox (badness 1314) in paragraph at lines 491--492
+\TU/TimesNewRoman(0)/m/n/10 Zhou, H., Celik, O., Blessing, D., Lioutikov,
+ []
+
+
+
+[8]
+Underfull \hbox (badness 2042) in paragraph at lines 505--506
+\TU/TimesNewRoman(0)/m/n/10 senborn, D., Zhai, X., Unterthiner, T., ... &
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 505--506
+\TU/TimesNewRoman(0)/m/n/10 words: Transformers for image recognition at
+ []
+
+
+Underfull \hbox (badness 2253) in paragraph at lines 505--506
+\TU/TimesNewRoman(0)/m/n/10 scale. arXiv preprint arXiv:2010.11929 (ICLR
+ []
+
+
+Underfull \hbox (badness 2042) in paragraph at lines 508--509
+\TU/TimesNewRoman(0)/m/n/10 senborn, D., Zhai, X., Unterthiner, T., ... &
+ []
+
+
+Underfull \hbox (badness 1142) in paragraph at lines 508--509
+\TU/TimesNewRoman(0)/m/n/10 words: Transformers for image recognition at
+ []
+
+
+Underfull \hbox (badness 1019) in paragraph at lines 509--510
+[]\TU/TimesNewRoman(0)/m/n/10 Zhang, Y., Liu, H., & Hu, Q. (2021). Trans-
+ []
+
+
+Underfull \hbox (badness 5741) in paragraph at lines 509--510
+\TU/TimesNewRoman(0)/m/n/10 Assisted Intervention (MICCAI) (pp. 14-24).
+ []
+
+
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 519--520
+\TU/TimesNewRoman(0)/m/n/10 and Computer-Assisted Intervention (MICCAI)
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 520--521
+[]\TU/TimesNewRoman(0)/m/n/10 : Zhou, H. Y., Guo, J., Zhang, Y., Yu, X.,
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 528--529
+\TU/TimesNewRoman(0)/m/n/10 modeling long sequences with structured state
+ []
+
+
+Underfull \hbox (badness 1584) in paragraph at lines 528--529
+\TU/TimesNewRoman(0)/m/n/10 spaces. \TU/TimesNewRoman(0)/m/it/10 arXiv preprint arXiv:2111.00396 \TU/TimesNewRoman(0)/m/n/10 (Pub-
+ []
+
+
+
+[9]
+
+
+
+[10
+
+] (./MSL-UNet-Latex.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `MSL-UNet-Latex.out' has not changed.
 (rerunfilecheck)             Checksum: 50A3AB699E04582A7C7C534B7B971EBF;3690.
  ) 
 Here is how much of TeX's memory you used:
- 17255 strings out of 473832
- 330088 string characters out of 5718011
- 881239 words of memory out of 5000000
- 40062 multiletter control sequences out of 15000+600000
+ 17287 strings out of 473832
+ 330614 string characters out of 5718011
+ 878446 words of memory out of 5000000
+ 40094 multiletter control sequences out of 15000+600000
  573741 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,10n,93p,1230b,419s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,10n,93p,1497b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on MSL-UNet-Latex.pdf (7 pages).
+Output written on MSL-UNet-Latex.pdf (10 pages).
