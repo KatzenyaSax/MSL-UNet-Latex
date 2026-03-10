@@ -30,7 +30,7 @@
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
 \usepackage{hyperref}%加入链接
-\usepackage{fontspec} %字体设置包%
+%\usepackage{fontspec} %字体设置包%
 
 
 % 设置页眉页脚
@@ -40,7 +40,7 @@
 %\lhead{}
 %\cfoot{\thepage}
 
-\setmainfont{Times New Roman}
+%\setmainfont{Times New Roman}
 
 % 标题信息
 \title{MSL-UNet: High-Performance U-Net Based on Vision Mamba and Strip Large-Kernel Convolution}
@@ -89,9 +89,9 @@ However, this enhancement in representation learning entails a significant drawb
 
 State Space Models (SSMs), deeply rooted in classical control theory and signal processing, provide a robust mathematical framework for modeling dynamical systems \cite{kalman1960new}. These models characterize the evolution of a system’s latent states through linear ordinary differential equations (ODEs) or their discrete-time counterparts, offering a principled methodology for processing both continuous and discrete sequences \cite{gu2021efficiently}. Historically, SSMs have been recognized for their rigorous theoretical foundations and their innate capacity to capture long-range dependencies with linear computational complexity—a property that stands in stark contrast to the quadratic scaling inherent in the self-attention mechanism of Transformers \cite{gu2023mamba, vaswani2017attention}. By effectively mapping input sequences to hidden representations through a recursive or convolutional formulation, SSMs have emerged as a highly efficient alternative for modeling extensive temporal or spatial contexts \cite{gu2020hippo, fu2022hungry}.
 
-The application of SSMs to deep learning gained significant momentum with the introduction of the Structured State Space Sequence model (S4). S4 combined HiPPO theory for long-range memory with a structured, linear time-invariant (LTI) formulation, enabling efficient training and demonstrating remarkable performance on long-sequence modeling tasks. However, a key limitation of standard S4 and similar LTI-SSMs is their time-invariant nature—their system parameters are fixed and independent of the input, which restricts their ability to perform context-dependent reasoning or selectively focus on relevant information within a sequence.
+The application of State Space Models (SSMs) to deep learning accelerated significantly with the introduction of the Structured State Space Sequence model (S4) \cite{gu2021efficiently}. S4 integrated the HiPPO (Hidden Information Processing for Preserving Online Trajectories) initialization framework for long-range memory with a structured, linear time-invariant (LTI) formulation, facilitating highly efficient parallel training and demonstrating remarkable performance on extensive sequence modeling tasks \cite{gu2020hippo}. However, a critical limitation of standard S4 and similar LTI-SSMs is their intrinsic time-invariant property—their state-transition parameters remain fixed and strictly independent of the input data \cite{fu2022hungry}. This structural rigidity fundamentally restricts their capacity to perform context-dependent reasoning or to selectively focus on salient information within a complex sequence, an imperative requirement for tasks involving dense and heterogeneous visual representations \cite{gu2023mamba}.
 
-This fundamental limitation was addressed by the groundbreaking selective state space model, exemplified by Mamba. The core innovation of Mamba lies in making the SSM parameters functions of the input, thereby introducing a selection mechanism. This allows the model to dynamically decide what information to propagate or ignore, significantly enhancing its expressiveness for discrete, information-dense data like language and images. This selective mechanism, while maintaining the computational benefits of linear scaling, is the key that unlocked the high performance of Mamba-based architectures in domains previously dominated by Transformers.
+To overcome these inherent constraints, the groundbreaking selective state space model, notably Mamba \cite{gu2023mamba}, was introduced. The core innovation of Mamba lies in parameterizing the SSM transition matrices as functions of the input, thereby incorporating a data-dependent selection mechanism. This allows the model to dynamically propagate or attenuate information based on the current context, significantly enhancing its representation capacity for information-dense data such as natural language and medical imagery \cite{zhu2024vim, liu2024vmamba}. By maintaining the computational efficiency of linear scaling while introducing this selective capability, Mamba-based architectures have emerged as a high-performance alternative to Transformers, effectively bridging the gap between global receptive fields and computational economy in complex vision tasks \cite{ruan2024vmunet, ma2024umamba}.
 
 
 
@@ -124,24 +124,24 @@ In this section, we will first introduce the overall architecture of MSL-UNet, f
 
 \subsection{MSL-UNet}
 
-As depicted in Figure \textcolor{red}{1} (a), the overall architecture of MSL-UNet is presented, which is based on U-Shape-Network. Specifically, MSL-UNet comprises a Patch Embedding layer as initial processing, four-stage VSS Blocks as the encoder, four-stage MSLCBs as the decoder, a SH layer as final projection and SLGAGs as skip connections.
+As depicted in Figure \textcolor{red}{1} (a), the overall architecture of MSL-UNet is presented, which is based on U-Shape-Network\cite{ronneberger2015unet}. Specifically, MSL-UNet comprises a Patch Embedding layer as initial processing, four-stage VSS Blocks\cite{liu2024vmamba,gu2023mamba} as the encoder, four-stage MSLCBs as the decoder, a SH layer as final projection and SLGAGs as skip connections.
 
 Firstly, in the Patch Embedding layer input image is divided from 
 $x=R^{H\times W\times 3} $
 into
 ${x}{'}\in {R}^{\frac{H}{4} \times \frac{W}{4} \times C}$, each patch is non-overlapping and the size is $4 \times 4$, subsequently mapping the dimensions of the image to C. Before entering the encoder layers, ${x}{'}$ will be normalized.
 
-For the encoder, we employ eight VSS Blocks in four stages where one stage pocesses two VSS Blocks, with a patch merging operation at the end of the first three ges to reduce the height and width of the input features while increasing the number of channels. The channel counts for each stage are [C, 2C, 4C, 8C].
+For the encoder, we employ eight VSS Blocks distributed across four stages, with each stage comprising two VSS Blocks. A patch merging operation is applied at the end of the first three stages to downsample the spatial dimensions of the input features while simultaneously doubling the channel capacity \cite{liu2021swin}. Consequently, the channel counts for the four stages are denoted as [C, 2C, 4C, 8C].
 
-Similarly, for the decoder we employ four MSLCBs to refine pyramid features extracted from the encoder via skip connections(i.e., x1, x2, x3, x4 in Figure1). Also, a patch expanding operation is used at the end of the last three MSLCBs. The channel counts for each stage are [8C, 4C, 2C, C].
+Similarly, the decoder utilizes four Multi-scale Strip Large-kernel Convolutional Blocks (MSLCBs) to progressively refine the hierarchical pyramid features extracted from the encoder via skip connections (i.e., x1, x2, x3, and x4, as illustrated in Figure 1) \cite{lin2017feature}. Furthermore, a patch expanding operation is employed following the initial three MSLCBs to progressively restore the spatial resolution \cite{cao2023swin}. The channel counts for the decoder stages follow the reverse order: [8C, 4C, 2C, C].
 
-We employ three SLGAGs for the skip connections. Features that are upsampled in patch expanding layer are added to the output from SLGAGs. 
+To bridge the semantic gap between the encoder and decoder, we integrate three Strip Large-Kernel Grouped Attention Gates (SLGAGs) within the skip connections \cite{oktay2018attention}. The features that are upsampled in the patch expanding layer are subsequently element-wise added to the refined outputs from the corresponding SLGAGs.
 
-Finally, the SH layer produces the final segmentation output.
+Finally, a Segmentation Head (SH) layer is applied to project the fused features and produce the final segmentation output.
 
 \subsection{VSS Block}
 
-As depicted in Figure \textcolor{red}{1} (b), the VSS Block, derived from VMamba\cite{VMamba}, is the core module of our encoder. Firstly, the input patches $x$ are layer normalized, then split into two branches, where one branch performs global modeling but loses local features, and the other branch preserves local features.
+As depicted in Figure \textcolor{red}{1} (b), the VSS Block, derived from VMamba\cite{zhu2024vim,liu2024vmamba}, is the core module of our encoder. Firstly, the input patches $x$ are layer normalized, then split into two branches, where one branch performs global modeling but loses local features, and the other branch preserves local features.
 
 The front branch firstly processes the input patches through a linear layer $LL(.)$ and a depthwise separable convolution $DWC(.)$, with an activation function $R(.)$ at the end. We then feed the patches into $SS2D(.)$ for future feature extraction. Finally, the features are layer normalized by $LN(.)$ and await output patches from the other branch.
 
@@ -422,8 +422,14 @@ We have designed a series of experiments to evaluate the performance of the MSLC
 
 \section{Conclusions}
 
-In this paper, we have presented MSL-UNet, a new 
+In this paper, we present MSL-UNet, a novel and efficient medical image segmentation framework built upon Vision Mamba and Multi-Scale Large-kernel Strip Convolutions. The model is designed to enhance segmentation efficiency while meeting the rigorous demands of real-world clinical applications. By synergizing the high-performance Vision Mamba backbone with multi-scale large-kernel and strip convolutions, MSL-UNet significantly improves the precision of both global context modeling and local feature extraction, demonstrating superior efficacy particularly in delineating small, elongated, and intricate anatomical structures.
 
+Experimental results on the Synapse and ACDC datasets indicate that MSL-UNet outperforms state-of-the-art models, including VM-UNet and TransCASCADE, in terms of mean segmentation accuracy. Furthermore, extensive ablation studies validate the feasibility and potential of integrating large-kernel and strip convolutions into medical imaging tasks. Our findings suggest that Vision Mamba is exceptionally well-suited for constructing robust encoding modules, while the combination of large-kernel and strip convolutions facilitates the design of lightweight yet high-efficiency decoders. We posit that Vision Mamba will increasingly supersede Transformers in future especially in lightweight scenarios; when coupled with emerging convolutional techniques, it is poised to further elevate the overall performance of diverse computer vision tasks.
+
+
+%本文中，我们介绍了 MSL-UNet ，一款基于vision mamba和多尺度大核条带卷积的新型高效医学图像分割模型，旨在进一步提升医学图像分割的效率，满足当前现实需求。我们的MSL-UNet采用高性能的vision mamba，配合多尺度大核卷积和条带卷积，进一步提升了全局特征与局部特征的提取精度，特别在各种微小细长的器官上表现良好。
+
+%基于Synapse与ACDC数据集上实验表明，我们的MSL-UNet的平均成绩超过了VM-UNet与TransCASCADE。我们还通过一系列实验进一步验证了大核卷积与条带卷积在医学图像分割领域应用的可行性与发展潜力，vision mamba非常适合构建编码模块，而利用大核卷积与条带卷积可以设计出普遍轻量级高效率的解码模块。我们认为，在未来，特别是在强调轻量级的场合中vision mamba将会进一步取代Transformer，配合大核卷积与条带卷积等新型的卷积技术将会进一步提升计算机视觉任务的整体性能。
 
 
 
@@ -470,6 +476,7 @@ Circuits and Systems for Video Technology, 2023.
 \bibitem{Uncertainty-awareHierarchicalAggregationNetwork forMedicalImageSegmentation} T. Zhou, Y. Zhou, G. Li, G. Chen, and J. Shen, “Uncertainty-aware
 hierarchical aggregation network for medical image segmentation,” IEEE
 Transactions on Circuits and Systems for Video Technology, 2024.
+
 \bibitem{chen2021transunet}
 Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., … \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. \textit{arXiv preprint arXiv:2102.04306}.
 \bibitem{cao2021swinunet}
@@ -502,19 +509,16 @@ Jia, X., Wang, Q., Donat, A., Xing, B., Li, G., Zhou, H., Celik, O., Blessing, D
 \bibitem{wang2018nonlocal}Wang, X., Girshick, R., Gupta, A., \& He, K. (2018). Non-local neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR) (pp. 7794-7803). 
 \bibitem{luo2016erf} Luo, W., Li, Y., Urtasun, R., \& Zemel, R. (2016). Understanding the effective receptive field in deep convolutional networks. Advances in neural information processing systems (NeurIPS), 29. 
 
-\bibitem{dosovitskiy2020vit}Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... \& Houlsby, N. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (ICLR 2021). 
-\bibitem{chen2021transunet}Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., ... \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. arXiv preprint arXiv:2102.04306. 
+\bibitem{dosovitskiy2020vit}Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... \& Houlsby, N. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (ICLR 2021).  
 
-\bibitem{dosovitskiy2020vit} Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., ... \& Houlsby, N. (2020). An image is worth 16x16 words: Transformers for image recognition at scale. arXiv preprint arXiv:2010.11929 (Published at ICLR 2021).
 \bibitem{zhang2021transfuse} Zhang, Y., Liu, H., \& Hu, Q. (2021). TransFuse: Fusing transformers and CNNs for medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 14-24). Springer, Cham.
-\bibitem{cao2023swin} Cao, H., Wang, Y., Chen, J., Jiang, D., Zhang, X., Tian, Q., \& Wang, M. (2023). Swin-Unet: Unet-like pure transformer for medical image segmentation. In Computer Vision–ECCV 2022 Workshops (pp. 205-218). Springer, Cham.
+\bibitem{cao2023swin} Cao, H., Wang, Y., Chen, J., Jiang, D., Zhang, X., Tian, Q., \& Wang, M. (2023). Swin-Unet: Unet-like pure transformer for medical image segmentation. In Computer Vision-ECCV 2022 Workshops (pp. 205-218). Springer, Cham.
 \bibitem{lin2022ds} Lin, A., Chen, B., Xu, J., Zhang, Z., Lu, G., \& Zhang, D. (2022). DS-TransUNet: Dual Swin Transformer U-Net for medical image segmentation. IEEE Transactions on Instrumentation and Measurement, 71, 1-15.
 \bibitem{xie2021segformer} Xie, E., Wang, W., Yu, Z., Anandkumar, A., Alvarez, J. M., \& Ping, L. (2021). SegFormer: Simple and efficient design for semantic segmentation with transformers. Advances in Neural Information Processing Systems (NeurIPS), 34, 12077-12090.
 \bibitem{valanarasu2021medical}Valanarasu, J. M. J., Oza, P., Hacihaliloglu, I., \& Patel, V. M. (2021). Medical transformer: Gated axial-attention for medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 36-46). Springer, Cham.
 
 
 \bibitem{vaswani2017attention} Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... \& Polosukhin, I. (2017). Attention is all you need. Advances in Neural Information Processing Systems (NeurIPS), 30. 
-\bibitem{chen2021transunet} Chen, J., Lu, Y., Yu, Q., Luo, X., Adeli, E., Wang, Y., ... \& Zhou, Y. (2021). TransUNet: Transformers make strong encoders for medical image segmentation. arXiv preprint arXiv:2102.04306. 
 \bibitem{hatamizadeh2022unetr} Hatamizadeh, A., Tang, Y., Nath, V., Zeghal, D., Entezari, N., Kingsley, S., ... \& Xu, D. (2022). UNETR: Transformers for 3D medical image segmentation. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) (pp. 574-584). 
 \bibitem{xie2021cotr}Xie, Y., Zhang, J., Shen, C., \& Xia, Y. (2021). CoTr: Efficiently bridging CNN and transformer for 3D medical image segmentation. In International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI) (pp. 171-180). Springer, Cham. 
 \bibitem{zhou2021nnformer}: Zhou, H. Y., Guo, J., Zhang, Y., Yu, X., Wang, L., \& Yu, Y. (2021). nnFormer: Interleaved transformer for volumetric segmentation. arXiv preprint arXiv:2109.03201. 
@@ -528,8 +532,38 @@ Gu, A., Dao, T., Ermon, S., Atzmon, A., \& Re, C. (2020). Hippo: Recurrent memor
 Gu, A., Goel, K., \& Re, C. (2021). Efficiently modeling long sequences with structured state spaces. \textit{arXiv preprint arXiv:2111.00396} (Published at ICLR 2022).
 \bibitem{fu2022hungry} 
 Fu, D. Y., Dao, T., Saab, K. K., Thomas, A. W., Rudra, A., \& Re, C. (2022). Hungry hungry hippos: Towards language modeling with state space models. \textit{arXiv preprint arXiv:2212.14052} (Published at ICLR 2023).
-\bibitem{gu2023mamba} 
-Gu, A., \& Dao, T. (2023). Mamba: Linear-time sequence modeling with selective state spaces. \textit{arXiv preprint arXiv:2312.00752}.
+
+\bibitem{ma2024umamba}
+Ma, J., Li, F., \& Wang, B. (2024). U-Mamba: Enhancing long-range dependency for biomedical image segmentation. \textit{arXiv preprint arXiv:2401.04722}.
+
+
+%====== 3 ======
+
+%3.1
+
+\bibitem{liu2021swin}
+Liu, Z., Lin, Y., Cao, Y., Hu, H., Wei, Y., Zhang, Z., ... \& Guo, B. (2021). Swin transformer: Hierarchical vision transformer using shifted windows. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, 10012-10022.
+
+\bibitem{lin2017feature}
+Lin, T. Y., Dollár, P., Girshick, R., He, K., Hariharan, B., \& Belongie, S. (2017). Feature pyramid networks for object detection. \textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 2117-2125.
+
+\bibitem{oktay2018attention}
+Oktay, O., Schlemper, J., Folgoc, L. L., Lee, M., Heinrich, M., Misawa, K., ... \& Kainz, B. (2018). Attention U-Net: Learning where to look for the pancreas. \textit{arXiv preprint arXiv:1804.03999}.
+
+
+
+%====== 5 ======
+
+\bibitem{rahman2023transcascade}
+Rahman, M. S., \& Bhattacharya, P. (2023). TransCASCADE: Cascaded Transformer for Medical Image Segmentation. \textit{Computer Methods and Programs in Biomedicine}, 231, 107374.
+
+\bibitem{hou2020strip}
+Hou, Q., Zhang, L., Cheng, M. M., \& Feng, J. (2020). Strip pooling: Rethinking spatial pooling for scene parsing. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 4003-4012. 
+
+\bibitem{ding2022scaling}
+Ding, X., Zhang, X., Han, J., \& Ding, G. (2022). Scaling up kernels in used convnets: Illuminating causes and revised design. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, 10104-10113. 
+
+
 
 
 \end{thebibliography}
