@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  11 MAR 2026 19:53
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  16 MAR 2026 17:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -45,9 +45,15 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen148
 \Gm@layoutvoffset=\dimen149
 \Gm@dimlist=\toks18
+) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip51
+\multirow@cntb=\count269
+\multirow@dima=\skip52
+\bigstrutjot=\dimen150
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
-\@mathmargin=\skip51
+\@mathmargin=\skip53
 
 For additional information on amsmath, use the `?' option.
 (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -55,21 +61,21 @@ Package: amstext 2021/08/26 v2.01 AMS text
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
-\ex@=\dimen150
+\ex@=\dimen151
 )) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen151
+\pmbraise@=\dimen152
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count269
+\inf@bad=\count270
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count270
-\leftroot@=\count271
+\uproot@=\count271
+\leftroot@=\count272
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count272
-\DOTSCASE@=\count273
+\classnum@=\count273
+\DOTSCASE@=\count274
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -79,46 +85,60 @@ LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen152
+\big@size=\dimen153
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count274
+\macc@depth=\count275
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count275
+\c@MaxMatrixCols=\count276
 \dotsspace@=\muskip17
-\c@parentequation=\count276
-\dspbrk@lvl=\count277
+\c@parentequation=\count277
+\dspbrk@lvl=\count278
 \tag@help=\toks20
-\row@=\count278
-\column@=\count279
-\maxfields@=\count280
+\row@=\count279
+\column@=\count280
+\maxfields@=\count281
 \andhelp@=\toks21
-\eqnshift@=\dimen153
-\alignsep@=\dimen154
-\tagshift@=\dimen155
-\tagwidth@=\dimen156
-\totwidth@=\dimen157
-\lineht@=\dimen158
+\eqnshift@=\dimen154
+\alignsep@=\dimen155
+\tagshift@=\dimen156
+\tagwidth@=\dimen157
+\totwidth@=\dimen158
+\lineht@=\dimen159
 \@envbody=\toks22
-\multlinegap=\skip52
-\multlinetaggap=\skip53
+\multlinegap=\skip54
+\multlinetaggap=\skip55
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2024/06/23 v1.3e Standard LaTeX Color (DPC)
+ (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: xetex.def on input line 149.
+ (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
+) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2025-01-18 L3 programming layer (loader) 
+ (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
+\g__graphics_track_int=\count282
+\l__pdf_internal_box=\box54
+\g__pdf_backend_annotation_int=\count283
+\g__pdf_backend_link_int=\count284
+))
+Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count285
+\l__lipsum_a_int=\count286
+\l__lipsum_b_int=\count287
+ (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
@@ -128,91 +148,27 @@ Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 106.
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics-def/xetex.def
-File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
-))
-\Gin@req@height=\dimen159
-\Gin@req@width=\dimen160
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen161
-\lightrulewidth=\dimen162
-\cmidrulewidth=\dimen163
-\belowrulesep=\dimen164
-\belowbottomsep=\dimen165
-\aboverulesep=\dimen166
-\abovetopsep=\dimen167
-\cmidrulesep=\dimen168
-\cmidrulekern=\dimen169
-\defaultaddspace=\dimen170
-\@cmidla=\count281
-\@cmidlb=\count282
-\@aboverulesep=\dimen171
-\@belowrulesep=\dimen172
-\@thisruleclass=\count283
-\@lastruleclass=\count284
-\@thisrulewidth=\dimen173
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen174
-\captionmargin=\dimen175
-\caption@leftmargin=\dimen176
-\caption@rightmargin=\dimen177
-\caption@width=\dimen178
-\caption@indent=\dimen179
-\caption@parindent=\dimen180
-\caption@hangindent=\dimen181
-Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count285
-\c@continuedfloat=\count286
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
-Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count287
-Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count288
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip54
-\multirow@cntb=\count289
-\multirow@dima=\skip55
-\bigstrutjot=\dimen182
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/algorithms/algorithm.sty
-Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count290
-\float@exts=\toks24
-\float@box=\box54
-\@float@everytoks=\toks25
-\@floatcapt=\box55
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
-)
-\@float@every@algorithm=\toks26
-\c@algorithm=\count291
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
-Package: algpseudocode 
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
-Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
-
-Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
-\c@ALG@line=\count292
-\c@ALG@rem=\count293
-\c@ALG@nested=\count294
-\ALG@tlm=\skip56
-\ALG@thistlm=\skip57
-\c@ALG@Lnr=\count295
-\c@ALG@blocknr=\count296
-\c@ALG@storecount=\count297
-\c@ALG@tmpcounter=\count298
-\ALG@tmplength=\skip58
-)
-Document Style - pseudocode environments for use with the `algorithmicx' style
+\Gin@req@height=\dimen160
+\Gin@req@width=\dimen161
+) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
+ (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
+\col@sep=\dimen162
+\ar@mcellbox=\box55
+\extrarowheight=\dimen163
+\NC@list=\toks24
+\extratabsurround=\skip56
+\backup@length=\skip57
+\ar@cellbox=\box56
+)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup4
+\symboldletters=\mathgroup5
+\symboldsymbols=\mathgroup6
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
@@ -242,22 +198,22 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count299
+\c@section@level=\count288
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count300
+\etb@tempcnta=\count289
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen183
-\Hy@linkcounter=\count301
-\Hy@pagecounter=\count302
+\@linkdim=\dimen164
+\Hy@linkcounter=\count290
+\Hy@pagecounter=\count291
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count303
+\Hy@SavedSpaceFactor=\count292
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 )
@@ -268,21 +224,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count304
+\c@Hy@tempcnt=\count293
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen184
+\XeTeXLinkMargin=\dimen165
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count305
-\Field@Width=\dimen185
-\Fld@charsize=\dimen186
+\Fld@menulength=\count294
+\Field@Width=\dimen166
+\Fld@charsize=\dimen167
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -294,18 +250,18 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count306
-\c@Item=\count307
-\c@Hfootnote=\count308
+\Hy@abspage=\count295
+\c@Item=\count296
+\c@Hfootnote=\count297
 )
 Package hyperref Info: Driver (autodetected): hxetex.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
-\pdfm@box=\box56
-\c@Hy@AnnotLevel=\count309
-\HyField@AnnotCount=\count310
-\Fld@listcount=\count311
-\c@bookmark@seq@number=\count312
+\pdfm@box=\box57
+\c@Hy@AnnotLevel=\count298
+\HyField@AnnotCount=\count299
+\Fld@listcount=\count300
+\c@bookmark@seq@number=\count301
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -316,121 +272,18 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip59
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2024/02/08 v1.3d Input encoding file
-\inpenc@prehook=\toks27
-\inpenc@posthook=\toks28
-
-
-Package inputenc Warning: inputenc package ignored with utf8 based engines.
-
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count313
-\lst@gtempboxa=\box57
-\lst@token=\toks29
-\lst@length=\count314
-\lst@currlwidth=\dimen187
-\lst@column=\count315
-\lst@pos=\count316
-\lst@lostspace=\dimen188
-\lst@width=\dimen189
-\lst@newlines=\count317
-\lst@lineno=\count318
-\lst@maxwidth=\dimen190
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
-File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count319
-\lst@skipnumbers=\count320
-\lst@framebox=\box58
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2024/09/23 1.10c listings configuration
-))
-Package: listings 2024/09/23 1.10c (Carsten Heinz)
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
+\Hy@SectionHShift=\skip58
 )
-Package xcolor Info: Driver file: xetex.def on input line 274.
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
-Package xcolor Info: Model `RGB' extended on input line 1365.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-\f@nch@headwidth=\skip60
-\f@nch@offset@elh=\skip61
-\f@nch@offset@erh=\skip62
-\f@nch@offset@olh=\skip63
-\f@nch@offset@orh=\skip64
-\f@nch@offset@elf=\skip65
-\f@nch@offset@erf=\skip66
-\f@nch@offset@olf=\skip67
-\f@nch@offset@orf=\skip68
-\f@nch@height=\skip69
-\f@nch@footalignment=\skip70
-\f@nch@widthL=\skip71
-\f@nch@widthC=\skip72
-\f@nch@widthR=\skip73
-\@temptokenb=\toks30
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 302.
-LaTeX Info: Redefining \nocite on input line 332.
-Package: cite 2015/02/27  v 5.5
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2025-01-18 L3 programming layer (loader) 
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
-\g__graphics_track_int=\count321
-\l__pdf_internal_box=\box59
-\g__pdf_backend_annotation_int=\count322
-\g__pdf_backend_link_int=\count323
-))
-Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
-)
-Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count324
-\l__lipsum_a_int=\count325
-\l__lipsum_b_int=\count326
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/dcolumn.sty
-Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
- (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/array.sty
-Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
-\col@sep=\dimen191
-\ar@mcellbox=\box60
-\extrarowheight=\dimen192
-\NC@list=\toks31
-\extratabsurround=\skip74
-\backup@length=\skip75
-\ar@cellbox=\box61
-)) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup6
-\symboldletters=\mathgroup7
-\symboldsymbols=\mathgroup8
-Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
-Package bm Info: No bold for \U/msa/m/n, using \pmb.
-Package bm Info: No bold for \U/msb/m/n, using \pmb.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
-)
-Package hyperref Info: Option `colorlinks' set `true' on input line 38.
+Package hyperref Info: Option `colorlinks' set `true' on input line 39.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks32
-\XKV@tempa@toks=\toks33
+\XKV@toks=\toks25
+\XKV@tempa@toks=\toks26
 )
-\XKV@depth=\count327
+\XKV@depth=\count302
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/adjustbox/adjcalc.sty
 Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
@@ -438,33 +291,33 @@ Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-
 Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box62
+\collectedbox=\box58
 )
-\tc@llx=\dimen193
-\tc@lly=\dimen194
-\tc@urx=\dimen195
-\tc@ury=\dimen196
+\tc@llx=\dimen168
+\tc@lly=\dimen169
+\tc@urx=\dimen170
+\tc@ury=\dimen171
 Package trimclip Info: Using driver 'tc-xetex.def'.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/adjustbox/tc-xetex.def
 File: tc-xetex.def 2019/01/04 v2.2 Clipping driver for xetex
 ))
-\adjbox@Width=\dimen197
-\adjbox@Height=\dimen198
-\adjbox@Depth=\dimen199
-\adjbox@Totalheight=\dimen256
-\adjbox@pwidth=\dimen257
-\adjbox@pheight=\dimen258
-\adjbox@pdepth=\dimen259
-\adjbox@ptotalheight=\dimen260
+\adjbox@Width=\dimen172
+\adjbox@Height=\dimen173
+\adjbox@Depth=\dimen174
+\adjbox@Totalheight=\dimen175
+\adjbox@pwidth=\dimen176
+\adjbox@pheight=\dimen177
+\adjbox@pdepth=\dimen178
+\adjbox@ptotalheight=\dimen179
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count328
+\c@checkoddpage=\count303
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box63
-\sift@deathcycles=\count329
-\@vwid@loff=\dimen261
-\@vwid@roff=\dimen262
+\@vwid@box=\box59
+\sift@deathcycles=\count304
+\@vwid@loff=\dimen180
+\@vwid@roff=\dimen181
 )) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
@@ -492,8 +345,8 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
-\symbold=\mathgroup9
-\symitalic=\mathgroup10
+\symbold=\mathgroup7
+\symitalic=\mathgroup8
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 34.
 LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
@@ -501,42 +354,35 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
 LaTeX Info: Redefining \hbar on input line 50.
-) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/abstract/abstract.sty
-Package: abstract 2009/06/08 v1.2a configurable abstracts
-\abstitleskip=\skip76
-\absleftindent=\skip77
-\absrightindent=\skip78
-\absparindent=\skip79
-\absparsep=\skip80
 ) (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/marvosym/marvosym.sty
 Package: marvosym 2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 )
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 68.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 61.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (./MSL-UNet-Latex.aux)
 \openout1 = `MSL-UNet-Latex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -572,53 +418,49 @@ LaTeX Font Info:    ... okay on input line 68.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
-Package caption Info: hyperref package is loaded.
-Package caption Info: listings package is loaded.
-Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 68.
+Package hyperref Info: Link coloring ON on input line 61.
 (./MSL-UNet-Latex.out) (./MSL-UNet-Latex.out)
 \@outlinefile=\write3
 \openout3 = `MSL-UNet-Latex.out'.
 
-\c@lstlisting=\count330
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 71.
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 71.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 71.
-LaTeX Font Info:    Trying to load font information for U+mvs on input line 71.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 73.
+LaTeX Font Info:    Trying to load font information for U+mvs on input line 73.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/marvosym/umvs.fd)
-Underfull \hbox (badness 1348) in paragraph at lines 85--86
+Underfull \hbox (badness 2197) in paragraph at lines 79--80
+\T1/ptm/b/n/10 Keywords: \T1/ptm/m/n/10 Med-i-cal Im-age Seg-men-ta-tion; Vi-sion
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 89--90
 \T1/ptm/m/n/10 med-i-cal im-ages, par-tic-u-larly com-puted to-mog-ra-phy
  []
 
 
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -629,55 +471,46 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Missing character: There is no — ("2014) in font ptmr8t!
 Missing character: There is no — ("2014) in font ptmr8t!
 
-Underfull \hbox (badness 1142) in paragraph at lines 107--108
+Underfull \hbox (badness 1142) in paragraph at lines 111--112
 \T1/ptm/m/n/10 the self-attention mech-a-nism, Trans-form-ers demon-
  []
 
 
 
 
-Underfull \hbox (badness 2310) in paragraph at lines 109--110
+Underfull \hbox (badness 2310) in paragraph at lines 113--114
 \T1/ptm/m/n/10 com-plex-ity of the self-attention mech-a-nism scales
  []
 
-Missing character: There is no ’ ("2019) in font ptmr8t!
+Missing character: There is no — ("2014) in font ptmr8t!
 Missing character: There is no — ("2014) in font ptmr8t!
 
 
 [2]
-Missing character: There is no — ("2014) in font ptmr8t!
-
-Underfull \hbox (badness 1859) in paragraph at lines 117--118
+Underfull \hbox (badness 1859) in paragraph at lines 121--122
 \T1/ptm/m/n/10 dependent se-lec-tion mech-a-nism. This al-lows the
  []
 
-File: Figures/MSL-UNet.pdf Graphic file (type pdf)
-<use Figures/MSL-UNet.pdf>
+File: Figures/SLMamba.pdf Graphic file (type pdf)
+<use Figures/SLMamba.pdf>
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 153.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 157.
 
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 177.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 181.
+
+Underfull \vbox (badness 1960) has occurred while \output is active []
+
 
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-[]\T1/ptm/m/n/10 Finally, we per-form bit-wise mul-ti-pli-ca-tion
- []
-
-
-Underfull \hbox (badness 1028) in paragraph at lines 190--191
-\T1/ptm/m/n/10 (Hadamard prod-uct) of $\OML/ztmcm/m/it/10 x$ \T1/ptm/m/n/10 and the ac-ti-vated single-
- []
-
-
-Underfull \hbox (badness 1132) in paragraph at lines 190--191
-\T1/ptm/m/n/10 channel fea-ture map, pro-duc-ing the attention-gated
+Underfull \hbox (badness 1354) in paragraph at lines 194--195
+[]\T1/ptm/m/n/10 Finally, ini-tial in-put $\OML/ztmcm/m/it/10 x$ \T1/ptm/m/n/10 and the ac-ti-vated single-
  []
 
 
@@ -692,20 +525,53 @@ File: Figures/Synapse.pdf Graphic file (type pdf)
 <use Figures/Synapse.pdf>
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 292.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 250.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+
 
 
 [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 2744) in paragraph at lines 321--322
+\T1/ptm/m/n/10 Trans-former. And other SOTA mod-els such as
+ []
+
+
+Underfull \hbox (badness 1292) in paragraph at lines 327--328
+\T1/ptm/m/n/10 Ta-ble [][][]1[][][]. Among SO-TAs our SLMamba achieves
+ []
+
+
+Underfull \hbox (badness 1442) in paragraph at lines 327--328
+\T1/ptm/m/n/10 of 83.56 and a mean HD95 of 16.18, sur-pass-ing
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 327--328
+\T1/ptm/m/n/10 Swin-UNet[[]], TransDeepLab[[]] and VM-UNet[[]]
+ []
 
 
 
+File: Figures/ACDC.pdf Graphic file (type pdf)
+<use Figures/ACDC.pdf>
 
 
 [6]
-File: Figures/ACDC.pdf Graphic file (type pdf)
-<use Figures/ACDC.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 
 
@@ -713,102 +579,102 @@ File: Figures/ACDC.pdf Graphic file (type pdf)
 [7]
 Missing character: There is no – ("2013) in font ptmr8t!
 
-Underfull \hbox (badness 1199) in paragraph at lines 468--469
+Underfull \hbox (badness 1199) in paragraph at lines 460--461
 \T1/ptm/m/it/10 on Med-i-cal Im-age Com-put-ing and Computer-
  []
 
 
-Underfull \hbox (badness 2142) in paragraph at lines 470--471
+Underfull \hbox (badness 2142) in paragraph at lines 462--463
 []\T1/ptm/m/n/10 Milletari, F., Navab, N., & Ah-madi, S. A.
  []
 
-
-
 Missing character: There is no – ("2013) in font ptmr8t!
 Missing character: There is no … ("2026) in font ptmr8t!
+
+
 Missing character: There is no … ("2026) in font ptmr8t!
 
-Underfull \hbox (badness 1199) in paragraph at lines 486--488
+Underfull \hbox (badness 1199) in paragraph at lines 478--480
 \T1/ptm/m/n/10 rep-re-sen-ta-tion learn-ing with bidi-rec-tional state
  []
 
 
-Underfull \hbox (badness 5161) in paragraph at lines 491--492
+Underfull \hbox (badness 5161) in paragraph at lines 483--484
 []\T1/ptm/m/n/10 Ma, J., Li, F., & Wang, B. (2024). U-
  []
 
 
 
 [8]
-Underfull \hbox (badness 1490) in paragraph at lines 499--500
+Underfull \hbox (badness 1490) in paragraph at lines 491--492
 \T1/ptm/m/n/10 ing for scene pars-ing. In \T1/ptm/m/it/10 Pro-ceed-ings of the
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 511--512
+Underfull \hbox (badness 1178) in paragraph at lines 503--504
 \T1/ptm/m/n/10 senborn, D., Zhai, X., Un-terthiner, T., ... &
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 511--512
+Underfull \hbox (badness 1454) in paragraph at lines 503--504
 \T1/ptm/m/n/10 scale. \T1/ptm/m/it/10 arXiv preprint arXiv:2010.11929 (ICLR
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 514--515
+Underfull \hbox (badness 1199) in paragraph at lines 506--507
 \T1/ptm/m/it/10 on Med-i-cal Im-age Com-put-ing and Computer-
  []
 
 
-Underfull \hbox (badness 4981) in paragraph at lines 514--515
+Underfull \hbox (badness 4981) in paragraph at lines 506--507
 \T1/ptm/m/it/10 Assisted In-ter-ven-tion (MIC-CAI) (pp. 14-24).
  []
 
 
 
 
-Underfull \hbox (badness 1448) in paragraph at lines 531--532
+Underfull \hbox (badness 1448) in paragraph at lines 523--524
 \T1/ptm/m/n/10 L., & Yu, Y. (2021). nn-Former: In-ter-leaved
  []
 
 
 
 [9]
-Underfull \hbox (badness 2726) in paragraph at lines 573--574
+Underfull \hbox (badness 2726) in paragraph at lines 565--566
 \T1/ptm/m/it/10 Con-fer-ence on Com-puter Vi-sion and Pat-tern
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 586--587
+Underfull \hbox (badness 2726) in paragraph at lines 578--579
 \T1/ptm/m/it/10 Con-fer-ence on Com-puter Vi-sion and Pat-tern
  []
 
 
-
-
-Underfull \hbox (badness 1286) in paragraph at lines 598--599
+Underfull \hbox (badness 1286) in paragraph at lines 590--591
 []\T1/ptm/m/n/10 Hendrycks, D., & Gim-pel, K. (2016). Gaus-
  []
 
 
-Underfull \hbox (badness 2221) in paragraph at lines 619--620
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 611--612
 []\T1/ptm/m/n/10 Loshchilov, I., & Hut-ter, F. (2016). SGDR:
  []
 
 
 
 [10]
-Underfull \hbox (badness 1189) in paragraph at lines 658--659
+Underfull \hbox (badness 1189) in paragraph at lines 650--651
 []\T1/ptm/m/n/10 Azad, R., Hei-dari, M., Shari-at-nia, M., Agh-
  []
 
 
-Underfull \hbox (badness 1661) in paragraph at lines 670--671
+Underfull \hbox (badness 1661) in paragraph at lines 662--663
 []\T1/ptm/m/n/10 Sun, H., Xu, J., & Duan, Y. (2024). Para-
  []
 
 
-Underfull \hbox (badness 5939) in paragraph at lines 670--671
+Underfull \hbox (badness 5939) in paragraph at lines 662--663
 \T1/ptm/m/n/10 med-i-cal im-age seg-men-ta-tion. \T1/ptm/m/it/10 arXiv preprint
  []
 
@@ -824,15 +690,15 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `MSL-UNet-Latex.out' has not changed.
-(rerunfilecheck)             Checksum: 50A3AB699E04582A7C7C534B7B971EBF;3690.
+(rerunfilecheck)             Checksum: 342295BD60F691C2597A9EF23CEC2316;3680.
  ) 
 Here is how much of TeX's memory you used:
- 16738 strings out of 473832
- 272547 string characters out of 5718011
- 769521 words of memory out of 5000000
- 39537 multiletter control sequences out of 15000+600000
- 617351 words of font info for 139 fonts, out of 8000000 for 9000
+ 11980 strings out of 473832
+ 194111 string characters out of 5718011
+ 697108 words of memory out of 5000000
+ 34843 multiletter control sequences out of 15000+600000
+ 614087 words of font info for 123 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,13n,93p,1453b,449s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,13n,93p,1457b,447s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on MSL-UNet-Latex.pdf (11 pages).
