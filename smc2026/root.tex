@@ -1,16 +1,16 @@
-% This is samplepaper.tex, a sample chapter demonstrating the
-% LLNCS macro package for Springer Computer Science proceedings;
-% Version 2.20 of 2017/10/04
-%
-\documentclass[runningheads]{llncs}
-%
-\usepackage{graphicx}
-% Used for displaying a sample figure. If possible, figure files should
-% be included in EPS format.
-%
-% If you use the hyperref package, please uncomment the following line
-% to display URLs in blue roman font according to Springer's eBook style:
-% \renewcommand\UrlFont{\color{blue}\rmfamily}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
 
 \usepackage{multirow}
 \usepackage{amsmath}
@@ -34,38 +34,57 @@ citecolor=green
 %\usepackage{fontspec} %字体设置包%
 \usepackage{adjustbox} %表格居中
 
+
+%In case you encounter the following error:
+%Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
+%Error 1000 An error occurred while parsing a contents stream. Unable to analyze the PDF file.
+%This is a known problem with pdfLaTeX conversion filter. The file cannot be opened with acrobat reader
+%Please use one of the alternatives below to circumvent this error by uncommenting one or the other
+%\pdfobjcompresslevel=0
+%\pdfminorversion=4
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+\title{\LARGE \bf
+SLMambaMedseg: Synergizing Vision Mamba and Multi-scale Strip Large-kernel Convolutions for Medical Image Segmentation%*
+}
+
+
+\author{Zhibo Wang$^{1}$ and Kaigui Wu$^{2}$\textsuperscript{\Letter}% <-this % stops a space
+%\thanks{*This work was not supported by any organization}% <-this % stops a space
+\thanks{$^{1}$Zhibo Wang is with School of Computer Science, Chongqing University, Chongqing, 400044, China
+        {\tt\small zhibowang@stu.cqu.edu.cn}}%
+\thanks{$^{2}$Kaigui Wu is School of Computer Science, Chongqing University, Chongqing, 400044, China
+        {\tt\small kaiguiwu@cqu.edu.cn}}%
+}
+
+
 \begin{document}
-%
-\title{SLMambaMedseg: Synergizing Vision Mamba and Multi-scale Strip Large-kernel Convolutions for Medical Image Segmentation}
-\titlerunning{SLMambaMedseg: Strip Large-kernel Mamba for Medical Image Segmentation}
-
-%
-%\titlerunning{Abbreviated paper title}
-% If the paper title is too long for the running head, you can set
-% an abbreviated paper title here
-%
-%\author{Zhibo Wang\and Kaigui Wu\textsuperscript{\Letter} }
-%
-%\authorrunning{Z. Wang et al.}
-% First names are abbreviated in the running head.
-% If there are more than two authors, 'et al.' is used.
-%
-%\institute{School of Computer Science, Chongqing University, Chongqing, 400044, China\\ \email{zhibowang@stu.cqu.edu.cn}\\ \email{kaiguiwu@cqu.edu.cn}}
-%
-\maketitle              % typeset the header of the contribution
-%
 
 
 
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-%The abstract should briefly summarize the contents of the paper in 15--250 words.
 
 While Vision Mamba has emerged as a formidable alternative to Transformers for global context modeling, its efficacy in decoding complex medical structures remains limited. This paper introduces Strip Large-kernel Mamba for Medical Image Segmentation (SLMambaMedseg), a novel hybrid architecture designed to bridge the gap between long-range dependency and directional feature refinement. Our core innovation lies in the Multi-scale Strip Large-kernel Convolutional Block (MSLCB), which replaces conventional decoders to explicitly capture the anisotropic features of slender organs. By integrating a Strip Large-kernel Gated Attention (SLGA) mechanism, the model effectively filters multi-scale noise while amplifying critical anatomical details. Extensive evaluations on Synapse and ACDC benchmarks demonstrate that SLMambaMedseg outperforms state-of-the-art models, particularly in small-object segmentation, achieving a DSC of 83.36\% and an impressive HD95 of 16.18 mm on Synapse.
 
-
-\keywords{Medical Image Segmentation  \and Vision Mamba \and Strip Convolution \and Multi-scale Large-kernel Convolution.}
 \end{abstract}
+
+
 
 
 
@@ -180,8 +199,8 @@ Finally, initial input $x$ and the activated single-channel feature map enter a 
 
 The $SLGAG(.)$ can be formulated as in Equation \textcolor{red}{2}: 
 \begin{scriptsize}
-\begin{align}
-	SLGAG(g,x) = x \otimes \sigma(BN(Cnv_{1\times 1}(R(SC(g) + BN(Cnv_{3\times 3}(g)) + SC(x) + BN(Cnv_{3\times 3}(x))))))
+\begin{align}\nonumber
+	SLGAG(g,x) = x \otimes \sigma(BN(Cnv_{1\times 1}(R(SC(g) + \\BN(Cnv_{3\times 3}(g)) + SC(x) + BN(Cnv_{3\times 3}(x))))))
 \end{align}
 \end{scriptsize}
 
@@ -194,7 +213,8 @@ We introduce a new multi-scale strip large-kernel convolutional block as depicte
 The $CA(.)$ can be formulated as in Equation \textcolor{red}{3}:
 \begin{scriptsize}   
 \begin{align}
-  CA(x) = x \otimes \sigma(PWC_{C}(R(PWC_{C/r}((AMP(x))))) + PWC_{C}(R(PWC_{C/r}(AAP(x)))))
+  CA(x) = x \otimes \sigma(PWC_{C}(R(PWC_{C/r}((AMP(x))))) + \nonumber
+  \\PWC_{C}(R(PWC_{C/r}(AAP(x)))))
 \end{align}
 \end{scriptsize}
 
@@ -211,8 +231,9 @@ The $SA(.)$ can be formulated as in Equation \textcolor{red}{4}:
 
 The $MA(.)$ can be formulated as in Equation \textcolor{red}{5}:
 \begin{scriptsize}   
-\begin{align}
-  MA(x)=x+BN(PWC_{C}(CSF(\sum_{}^{}DWC_{k_i}(R6(BN(PWC_{C\times2}(x)))))))
+\begin{align}\nonumber
+  MA(x)=x+BN(PWC_{C}(CSF(\sum_{}^{}DWC_{k_i}\\ 
+  (R6(BN(PWC_{C\times2}(x)))))))
 \end{align}
 \end{scriptsize}
 
@@ -343,7 +364,7 @@ ParaTransCNN\cite{sun2024paratranscnn} & 91.31& 92.76& 85.84& 95.34 \\
 VM-UNet\cite{ruan2024vmunet} & 91.63& 90.25& 89.14& 95.50 \\
 TransCASCADE\cite{rahman2023transcascade} & 92.12& 90.65& 89.68& 96.02 \\
 \hline
-SLMambaMedseg(ours) & \textbf{93.51} & \textbf{92.22} & \textbf{90.58} &\textbf{97.23} \\\hline
+SLMambaMedseg(ours) & \textbf{92.81} & \textbf{91.52} & \textbf{90.58} &\textbf{96.53} \\\hline
 \end{tabular}
 \caption{ Results on ACDC. DICE scores($\%$)are reported for individual organs.$\uparrow$ denotes higher the better. The best results are in bold.}
 \label{table2}
@@ -382,7 +403,7 @@ To understand the effect of different encoders, a set of experiments are conduct
 \begin{tabular}{l|ccc|c}\hline
 \multirow{2}{*}{Methods} & \multicolumn{3}{c|}{Synapse} & ACDC \\\cline{2-5}
 & DICE$\uparrow$ & HD95$\downarrow$ &Kid.(L) & DICE$\uparrow$ \\\hline
-SLMambaMedseg-Without-SLGAG & 81.80 & 18.47 &83.97  & 90.79\\\hline
+No-SLGAG & 81.80 & 18.47 &83.97  & 90.79\\\hline
 SLMambaMedseg & \textbf{83.36} & \textbf{16.18} &\textbf{88.57}  & \textbf{92.81} \\\hline
 \end{tabular}
 \caption{Results of Ablation Experiment of how Strip Large-kernel Group Attention Gate(SLGAG) affects on Synapse and ACDC datasets. $\uparrow$ denotes higher the better, $\downarrow$ denotes lower the better.}
@@ -661,7 +682,6 @@ Ding, X., Zhang, X., Han, J., \& Ding, G. (2022). Scaling up kernels in used con
 
 
 \end{thebibliography}
-
 
 
 
