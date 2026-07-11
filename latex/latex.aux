@@ -1,41 +1,33 @@
 \relax 
 \providecommand\hyper@newdestlabel[2]{}
-\providecommand*\HyPL@Entry[1]{}
-\citation{ronneberger2015unet,milletari2016vnet,isensee2021nnu}
-\citation{chen2021transunet}
-\citation{cao2021swinunet}
-\citation{hatamizadeh2022unetr}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{hou2020strippooling,liu2023slak}
+\citation{chen2021transunet,cao2023swin,hatamizadeh2022unetr}
 \citation{gu2023mamba,liu2024vmamba,zhu2024vim}
 \citation{ruan2024vmunet}
 \citation{ma2024umamba}
-\citation{liu2022convnext}
-\citation{hou2020strippooling}
-\HyPL@Entry{0<</S/D>>}
+\citation{hou2020strippooling,liu2023slak,chu2021active}
 \providecommand \oddpage@label [2]{}
-\@writefile{toc}{\contentsline {title}{SLMambaMedseg: Synergizing Vision Mamba and Multi-scale Strip Large-kernel Convolutions for Medical Image Segmentation}{1}{chapter.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {title}{MultiStripMamba: Multi-Scale Strip Convolutions Meet Vision Mamba for Medical Image Segmentation}{1}{chapter.1}\protected@file@percent }
 \@writefile{toc}{\authcount {1}}
 \@writefile{toc}{\contentsline {author}{No Author Given}{1}{chapter.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{ruan2024vmunet}
 \citation{ronneberger2015unet}
-\citation{lecun2015deep,he2016resnet}
-\citation{wang2018nonlocal}
-\citation{luo2016erf}
-\citation{dosovitskiy2020vit,chen2021transunet}
-\citation{dosovitskiy2020vit}
-\citation{zhang2021transfuse}
-\citation{cao2023swin}
-\citation{lin2022ds}
-\citation{xie2021segformer}
-\citation{valanarasu2021medical}
-\citation{vaswani2017attention,hatamizadeh2022unetr}
-\citation{xie2021cotr}
-\citation{chen2021transunet}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Medical image segmentation}{2}{subsection.2.1}\protected@file@percent }
+\citation{oktay2018attention,schlemper2019attention}
+\citation{zhou2018unet++}
+\citation{chen2021transunet,cao2023swin,hatamizadeh2022unetr}
+\citation{hou2020strippooling}
+\citation{liu2023slak}
+\citation{chu2021active}
+\citation{oktay2018attention}
 \citation{kalman1960new}
 \citation{gu2021efficiently}
 \citation{gu2023mamba,vaswani2017attention}
 \citation{gu2020hippo,fu2022hungry}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Works}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Medical image segmentation}{2}{subsection.2.1}\protected@file@percent }
 \citation{gu2021efficiently}
 \citation{gu2020hippo}
 \citation{fu2022hungry}
@@ -51,44 +43,25 @@
 \citation{oktay2018attention}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}State Space Model}{3}{subsection.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{3}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}SLMambaMedseg}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}MultiStripMamba}{3}{subsection.3.1}\protected@file@percent }
 \citation{zhu2024vim,liu2024vmamba}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  (a) The overall architecture of SLMambaMedseg. (b) VSS Block is the main construction of our encoder. (c) Strip Large-kernel grouped attention gate(SLGAG) can enhance features from skip connections. (d) Multi-scale Strip Large-kernel convolutional block(SLCB), progressing patches in all dimensions to further enhance features, is the main component of our decoder. (e) Strip convolutional block(SC). (f) Channel attention block(CA). (g) Spatial attention block(SA). (h) Multi-scale attention block(MA). (i) Strip block. (j) Strip module. (k) Feed-Forward Network(FFN). }}{4}{figure.1}\protected@file@percent }
-\newlabel{figure1}{{1}{4}{(a) The overall architecture of SLMambaMedseg. (b) VSS Block is the main construction of our encoder. (c) Strip Large-kernel grouped attention gate(SLGAG) can enhance features from skip connections. (d) Multi-scale Strip Large-kernel convolutional block(SLCB), progressing patches in all dimensions to further enhance features, is the main component of our decoder. (e) Strip convolutional block(SC). (f) Channel attention block(CA). (g) Spatial attention block(SA). (h) Multi-scale attention block(MA). (i) Strip block. (j) Strip module. (k) Feed-Forward Network(FFN)}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces  (a) The overall architecture of MultiStripMamba. (b) VSS Block is the main construction of our encoder. (c) Multi-Scale Convolutional Gate (MSCG) can enhance features from skip connections. (d) Multi-Scale Convolutional Block(MSCB), progressing patches in all dimensions to further enhance features, is the main component of our decoder. (e) Multi-scale Convolution (MSC). (f) Channel attention block(CA). (g) Spatial attention block(SA). (h) Strip block. (i) Strip module. (j) Feed-Forward Network(FFN). }}{4}{figure.1}\protected@file@percent }
+\newlabel{figure1}{{1}{4}{(a) The overall architecture of MultiStripMamba. (b) VSS Block is the main construction of our encoder. (c) Multi-Scale Convolutional Gate (MSCG) can enhance features from skip connections. (d) Multi-Scale Convolutional Block(MSCB), progressing patches in all dimensions to further enhance features, is the main component of our decoder. (e) Multi-scale Convolution (MSC). (f) Channel attention block(CA). (g) Spatial attention block(SA). (h) Strip block. (i) Strip module. (j) Feed-Forward Network(FFN)}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}VSS Block}{4}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Strip Large-kernel Grouped Attention Gate (SLGAG)}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Multi-Scale Convolutional Gate (MSCG)}{4}{subsection.3.3}\protected@file@percent }
 \citation{woo2018cbam}
 \citation{he2014spatial}
 \citation{lin2013network}
 \citation{woo2018cbam}
-\citation{howard2017mobilenets}
-\citation{zhang2018shufflenet}
-\citation{isensee2021nnu}
-\citation{ronneberger2015unet}
-\citation{oktay2018attention}
-\citation{chen2021transunet}
-\citation{wang2022stepwise}
-\citation{dong2021polyp}
-\citation{cao2021swinunet}
-\citation{wang2022mixed}
-\citation{ruan2022mew}
-\citation{rahman2023medical}
-\citation{azad2022transdeeplab}
-\citation{ruan2024vmunet}
-\citation{rahman2023transcascade}
 \citation{hou2020strip,liu2023slak,chu2021active}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Multi-scale Strip Large-kernel Convolutional Block (SLCB)}{5}{subsection.3.4}\protected@file@percent }
 \citation{hendrycks2016gelu}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Qualitative results on Synapse datasets are shown. The red rectangular box highlights incorrectly segmented structures by SOTA methods. }}{6}{figure.2}\protected@file@percent }
-\newlabel{figure2}{{2}{6}{Qualitative results on Synapse datasets are shown. The red rectangular box highlights incorrectly segmented structures by SOTA methods}{figure.2}{}}
-\newlabel{f1}{{3.4}{6}{Multi-scale Strip Large-kernel Convolutional Block (SLCB)}{figure.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold.}}{6}{table.1}\protected@file@percent }
-\newlabel{table1}{{1}{6}{Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Strip Convolution Block (SC)}{6}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Loss Function}{6}{subsection.3.6}\protected@file@percent }
-\newlabel{sec:loss}{{3.6}{6}{Loss Function}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Multi-Scale Convolutional Block (MSCB)}{5}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Multi-scale Convolution (MSC)}{5}{subsection.3.5}\protected@file@percent }
 \citation{landman2015miccai}
 \citation{bernard2018deep}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Loss Function}{6}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:loss}{{3.6}{6}{Loss Function}{subsection.3.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
 \citation{chen2021transunet,cao2021swinunet}
 \citation{bernard2018deep}
 \citation{loshchilov2017decoupled}
@@ -96,34 +69,40 @@
 \citation{milletari2016v}
 \citation{huttenlocher1993comparing}
 \citation{ronneberger2015unet}
+\citation{oktay2018attention}
 \citation{cao2021swinunet,cao2023swin}
+\citation{huang2022missformer}
 \citation{ruan2024vmunet}
 \citation{chen2021transunet}
 \citation{rahman2023transcascade}
 \citation{rahman2023transcascade}
 \citation{ruan2024vmunet}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{7}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Implementation details}{7}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experimental Results}{7}{subsection.4.2}\protected@file@percent }
 \citation{chen2021transunet}
 \citation{cao2021swinunet}
-\citation{azad2022transdeeplab}
 \citation{ruan2024vmunet}
+\citation{isensee2021nnu}
+\citation{ronneberger2015unet}
+\citation{oktay2018attention}
+\citation{chen2021transunet}
+\citation{cao2021swinunet}
+\citation{hatamizadeh2022unetr}
+\citation{rahman2023medical}
+\citation{liu2024swinumamba}
+\citation{ruan2024vmunet}
+\citation{rahman2023transcascade}
 \citation{rahman2023transcascade}
 \citation{ruan2024vmunet}
 \citation{cao2021swinunet}
 \citation{chen2021transunet}
-\citation{azad2022transdeeplab}
 \citation{ruan2024vmunet}
 \citation{rahman2023transcascade}
 \citation{isensee2021nnu}
+\citation{ronneberger2015unet}
+\citation{oktay2018attention}
 \citation{chen2021transunet}
 \citation{cao2021swinunet}
 \citation{heidari2023hiformer}
-\citation{azad2022transdeeplab}
-\citation{wang2022mixed}
 \citation{huang2022missformer}
-\citation{sun2024paratranscnn}
 \citation{ruan2024vmunet}
 \citation{rahman2023transcascade}
 \citation{ronneberger2015unet}
@@ -131,22 +110,28 @@
 \citation{chen2021transunet}
 \citation{ruan2024vmunet}
 \citation{rahman2023transcascade}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Implementation details}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Experimental Results}{7}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Results on Synapse Multi-Organ Segmentation}{7}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Results of ACDC Segmentation}{7}{section*.3}\protected@file@percent }
+\citation{ruan2024vmunet}
 \citation{ronneberger2015unet}
-\citation{cao2021swinunet}
-\@writefile{toc}{\contentsline {subsubsection}{Results on Synapse Multi-Organ Segmentation}{8}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Results of ACDC Segmentation}{8}{section*.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Qualitative results on ACDC datasets are shown. Red represents the right ventricle, blue represents the left ventricle, and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented regions by SOTA methods. }}{8}{figure.3}\protected@file@percent }
-\newlabel{figure3}{{3}{8}{Qualitative results on ACDC datasets are shown. Red represents the right ventricle, blue represents the left ventricle, and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented regions by SOTA methods}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Qualitative results on Synapse datasets are shown. The red rectangular box highlights incorrectly segmented structures by SOTA methods. }}{8}{figure.2}\protected@file@percent }
+\newlabel{figure2}{{2}{8}{Qualitative results on Synapse datasets are shown. The red rectangular box highlights incorrectly segmented structures by SOTA methods}{figure.2}{}}
+\newlabel{f1}{{4.2}{8}{Results on Synapse Multi-Organ Segmentation}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold.}}{8}{table.1}\protected@file@percent }
+\newlabel{table1}{{1}{8}{Results on Synapse Multi-Organ Segmentation. DICE scores are reported for individual organs. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold}{table.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Ablation Studies}{8}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Effect of Mamba Encoder}{8}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Effect of Individual MSCB Components}{8}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Effect of Multi-scale Convolution}{8}{section*.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Qualitative results on ACDC datasets are shown. Red represents the right ventricle, blue represents the left ventricle, and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented regions by SOTA methods. }}{9}{figure.3}\protected@file@percent }
+\newlabel{figure3}{{3}{9}{Qualitative results on ACDC datasets are shown. Red represents the right ventricle, blue represents the left ventricle, and green represents the myocardium. The yellow rectangular box highlights incorrectly segmented regions by SOTA methods}{figure.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces  Results on ACDC. DICE scores($\%$)are reported for individual organs.$\uparrow $ denotes higher the better. The best results are in bold.}}{9}{table.2}\protected@file@percent }
 \newlabel{table2}{{2}{9}{Results on ACDC. DICE scores($\%$)are reported for individual organs.$\uparrow $ denotes higher the better. The best results are in bold}{table.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Computational efficiency comparison. Params: number of parameters; FLOPs: floating-point operations per input (measured at $224\times 224$); Inference: average inference time per image; GPU Mem.: peak GPU memory during inference; Train Time: total training time on Synapse. $\downarrow $ denotes lower is better.}}{9}{table.3}\protected@file@percent }
-\newlabel{table_efficiency}{{3}{9}{Computational efficiency comparison. Params: number of parameters; FLOPs: floating-point operations per input (measured at $224\times 224$); Inference: average inference time per image; GPU Mem.: peak GPU memory during inference; Train Time: total training time on Synapse. $\downarrow $ denotes lower is better}{table.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Effect of SLGAG}{9}{section*.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Effect of Convolution Kernel Size in MA}{9}{section*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Effect of Individual SLCB Components}{9}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Effect of Decoder Architecture}{9}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Effect of MSCG}{9}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{Effect of Loss Function}{9}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions}{9}{section.5}\protected@file@percent }
 \bibcite{ronneberger2015unet}{1}
 \bibcite{milletari2016vnet}{2}
 \bibcite{isensee2021nnu}{3}
@@ -157,66 +142,70 @@
 \bibcite{zhu2024vim}{8}
 \bibcite{ruan2024vmunet}{9}
 \bibcite{ma2024umamba}{10}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Results of how different encoders affect performance of segmentaion on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold.}}{10}{table.4}\protected@file@percent }
-\newlabel{table3}{{4}{10}{Results of how different encoders affect performance of segmentaion on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better. The best results are in bold}{table.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Results of Ablation Experiment of how Strip Large-kernel Group Attention Gate(SLGAG) affects on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better.}}{10}{table.5}\protected@file@percent }
-\newlabel{table4}{{5}{10}{Results of Ablation Experiment of how Strip Large-kernel Group Attention Gate(SLGAG) affects on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better}{table.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusions}{10}{section.5}\protected@file@percent }
-\bibcite{liu2022convnext}{11}
-\bibcite{hou2020strippooling}{12}
-\bibcite{lecun2015deep}{13}
-\bibcite{he2016resnet}{14}
-\bibcite{wang2018nonlocal}{15}
-\bibcite{luo2016erf}{16}
-\bibcite{dosovitskiy2020vit}{17}
-\bibcite{zhang2021transfuse}{18}
-\bibcite{cao2023swin}{19}
-\bibcite{lin2022ds}{20}
-\bibcite{xie2021segformer}{21}
-\bibcite{valanarasu2021medical}{22}
-\bibcite{vaswani2017attention}{23}
-\bibcite{hatamizadeh2022unetr}{24}
-\bibcite{xie2021cotr}{25}
-\bibcite{zhou2021nnformer}{26}
-\bibcite{kalman1960new}{27}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Results of different depthwise convolution kernel strategies effect on Synapse and ACDC. In $[k_{1},k_{2},...,k_{n}]$, $k_{i}$ means size of each kernel, $\DOTSB \sum@ \slimits@ _{1}^{n}k_{i}$ means total number of the kernels. The best results are in bold.}}{11}{table.6}\protected@file@percent }
-\newlabel{table5}{{6}{11}{Results of different depthwise convolution kernel strategies effect on Synapse and ACDC. In $[k_{1},k_{2},...,k_{n}]$, $k_{i}$ means size of each kernel, $\sum _{1}^{n}k_{i}$ means total number of the kernels. The best results are in bold}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Ablation study of individual SLCB components on the Synapse dataset. Each variant removes one component while keeping all others unchanged.}}{11}{table.7}\protected@file@percent }
-\newlabel{table_slcb_ablation}{{7}{11}{Ablation study of individual SLCB components on the Synapse dataset. Each variant removes one component while keeping all others unchanged}{table.7}{}}
-\bibcite{gu2020hippo}{28}
-\bibcite{gu2021efficiently}{29}
-\bibcite{fu2022hungry}{30}
-\bibcite{liu2021swin}{31}
-\bibcite{lin2017feature}{32}
-\bibcite{oktay2018attention}{33}
-\bibcite{woo2018cbam}{34}
-\bibcite{he2014spatial}{35}
-\bibcite{lin2013network}{36}
-\bibcite{hu2018squeeze}{37}
-\bibcite{howard2017mobilenets}{38}
-\bibcite{zhang2018shufflenet}{39}
-\bibcite{hou2020strip}{40}
-\bibcite{liu2023slak}{41}
-\bibcite{chu2021active}{42}
-\bibcite{hendrycks2016gelu}{43}
-\bibcite{landman2015miccai}{44}
-\bibcite{bernard2018deep}{45}
-\bibcite{loshchilov2017decoupled}{46}
-\bibcite{loshchilov2016sgdr}{47}
-\bibcite{milletari2016v}{48}
-\bibcite{huttenlocher1993comparing}{49}
-\bibcite{rahman2023transcascade}{50}
-\bibcite{wang2022stepwise}{51}
+\bibcite{liu2024swinumamba}{11}
+\bibcite{liu2022convnext}{12}
+\bibcite{hou2020strippooling}{13}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Computational efficiency comparison. Params: number of parameters; FLOPs: floating-point operations per input (measured at $224\times 224$); Inference: average inference time per image; GPU Mem.: peak GPU memory during inference; Train Time: total training time on Synapse. $\downarrow $ denotes lower is better.}}{10}{table.3}\protected@file@percent }
+\newlabel{table_efficiency}{{3}{10}{Computational efficiency comparison. Params: number of parameters; FLOPs: floating-point operations per input (measured at $224\times 224$); Inference: average inference time per image; GPU Mem.: peak GPU memory during inference; Train Time: total training time on Synapse. $\downarrow $ denotes lower is better}{table.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Ablation study of decoder architectures on Synapse and ACDC datasets. All variants use the same VSS encoder. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better.}}{10}{table.4}\protected@file@percent }
+\newlabel{table3}{{4}{10}{Ablation study of decoder architectures on Synapse and ACDC datasets. All variants use the same VSS encoder. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better}{table.4}{}}
+\bibcite{lecun2015deep}{14}
+\bibcite{he2016resnet}{15}
+\bibcite{wang2018nonlocal}{16}
+\bibcite{luo2016erf}{17}
+\bibcite{dosovitskiy2020vit}{18}
+\bibcite{zhang2021transfuse}{19}
+\bibcite{cao2023swin}{20}
+\bibcite{lin2022ds}{21}
+\bibcite{xie2021segformer}{22}
+\bibcite{valanarasu2021medical}{23}
+\bibcite{vaswani2017attention}{24}
+\bibcite{hatamizadeh2022unetr}{25}
+\bibcite{xie2021cotr}{26}
+\bibcite{zhou2021nnformer}{27}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Ablation study of individual MSCB components on the Synapse dataset. Each variant removes one component while keeping all others unchanged.}}{11}{table.5}\protected@file@percent }
+\newlabel{table_slcb_ablation}{{5}{11}{Ablation study of individual MSCB components on the Synapse dataset. Each variant removes one component while keeping all others unchanged}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Effect of multi-scale convolution kernel configurations on the Synapse dataset. All experiments include MA ($[1,3,5]$) to isolate the MSC contribution. In the final architecture, MA is removed (see text), yielding the reported 84.11\% DSC with 11.93M parameters.}}{11}{table.6}\protected@file@percent }
+\newlabel{table_sc_ablation}{{6}{11}{Effect of multi-scale convolution kernel configurations on the Synapse dataset. All experiments include MA ($[1,3,5]$) to isolate the MSC contribution. In the final architecture, MA is removed (see text), yielding the reported 84.11\% DSC with 11.93M parameters}{table.6}{}}
+\bibcite{kalman1960new}{28}
+\bibcite{gu2020hippo}{29}
+\bibcite{gu2021efficiently}{30}
+\bibcite{fu2022hungry}{31}
+\bibcite{liu2021swin}{32}
+\bibcite{lin2017feature}{33}
+\bibcite{oktay2018attention}{34}
+\bibcite{schlemper2019attention}{35}
+\bibcite{zhou2018unet++}{36}
+\bibcite{woo2018cbam}{37}
+\bibcite{he2014spatial}{38}
+\bibcite{lin2013network}{39}
+\bibcite{hu2018squeeze}{40}
+\bibcite{howard2017mobilenets}{41}
+\bibcite{zhang2018shufflenet}{42}
+\bibcite{hou2020strip}{43}
+\bibcite{liu2023slak}{44}
+\bibcite{chu2021active}{45}
+\bibcite{hendrycks2016gelu}{46}
+\bibcite{landman2015miccai}{47}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Results of Ablation Experiment of how Multi-Scale Convolutional Gate (MSCG) affects on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better.}}{12}{table.7}\protected@file@percent }
+\newlabel{table4}{{7}{12}{Results of Ablation Experiment of how Multi-Scale Convolutional Gate (MSCG) affects on Synapse and ACDC datasets. $\uparrow $ denotes higher the better, $\downarrow $ denotes lower the better}{table.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Ablation study of loss function configurations on the Synapse dataset.}}{12}{table.8}\protected@file@percent }
 \newlabel{table_loss_ablation}{{8}{12}{Ablation study of loss function configurations on the Synapse dataset}{table.8}{}}
-\bibcite{dong2021polyp}{52}
-\bibcite{wang2022mixed}{53}
-\bibcite{ruan2022mew}{54}
-\bibcite{rahman2023medical}{55}
-\bibcite{azad2022transdeeplab}{56}
-\bibcite{heidari2023hiformer}{57}
-\bibcite{huang2022missformer}{58}
-\bibcite{sun2024paratranscnn}{59}
-\bibcite{yu2024mambaout}{60}
-\bibcite{ding2022scaling}{61}
+\bibcite{bernard2018deep}{48}
+\bibcite{loshchilov2017decoupled}{49}
+\bibcite{loshchilov2016sgdr}{50}
+\bibcite{milletari2016v}{51}
+\bibcite{huttenlocher1993comparing}{52}
+\bibcite{rahman2023transcascade}{53}
+\bibcite{wang2022stepwise}{54}
+\bibcite{dong2021polyp}{55}
+\bibcite{wang2022mixed}{56}
+\bibcite{ruan2022mew}{57}
+\bibcite{rahman2023medical}{58}
+\bibcite{azad2022transdeeplab}{59}
+\bibcite{heidari2023hiformer}{60}
+\bibcite{huang2022missformer}{61}
+\bibcite{sun2024paratranscnn}{62}
+\bibcite{yu2024mambaout}{63}
+\bibcite{ding2022scaling}{64}
 \gdef \@abspage@last{13}
