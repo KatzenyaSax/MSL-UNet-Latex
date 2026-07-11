@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  11 JUL 2026 11:03
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2026.2.21)  11 JUL 2026 11:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**prcv2026
-(./prcv2026.tex
+**latex
+(./latex.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/llncs/llncs.cls
@@ -461,8 +461,9 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count334
 \@vwid@loff=\dimen258
 \@vwid@roff=\dimen259
-)) (./prcv2026.aux)
-\openout1 = `prcv2026.aux'.
+))
+No file latex.aux.
+\openout1 = `latex.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
@@ -485,10 +486,11 @@ LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 Package hyperref Info: Link coloring ON on input line 38.
- (./prcv2026.out) (./prcv2026.out)
 \@outlinefile=\write3
-\openout3 = `prcv2026.out'.
+\openout3 = `latex.out'.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -532,9 +534,44 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
  (c:/Users/a1829/Desktop/applications/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (1.56499pt too wide) in paragraph at lines 75--76
-\TU/lmr/m/n/10 (CT), is a foundational task for computer-aided diagnosis, treatment planning and quantitative analysis[[],[],[]].
- []
+
+LaTeX Warning: Citation `ronneberger2015unet' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `milletari2016vnet' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `isensee2021nnu' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `hatamizadeh2022unetr' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `gu2023mamba' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `liu2024vmamba' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `zhu2024vim' on page 1 undefined on input line 75.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 1 undefined on input line 77.
+
+
+LaTeX Warning: Citation `ma2024umamba' on page 1 undefined on input line 77.
+
+
+LaTeX Warning: Citation `liu2022convnext' on page 1 undefined on input line 79.
+
+
+LaTeX Warning: Citation `hou2020strippooling' on page 1 undefined on input line 79.
 
 
 
@@ -542,68 +579,449 @@ Overfull \hbox (1.56499pt too wide) in paragraph at lines 75--76
 
 ]
 
+LaTeX Warning: Citation `ronneberger2015unet' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `lecun2015deep' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `he2016resnet' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `wang2018nonlocal' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `luo2016erf' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `dosovitskiy2020vit' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 2 undefined on input line 95.
+
+
+LaTeX Warning: Citation `dosovitskiy2020vit' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `zhang2021transfuse' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `cao2023swin' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `lin2022ds' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `xie2021segformer' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `valanarasu2021medical' on page 2 undefined on input line 97.
+
+
+LaTeX Warning: Citation `vaswani2017attention' on page 2 undefined on input line 99.
+
+
+LaTeX Warning: Citation `hatamizadeh2022unetr' on page 2 undefined on input line 99.
+
+
+LaTeX Warning: Citation `xie2021cotr' on page 2 undefined on input line 99.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 2 undefined on input line 99.
+
+
+
 [2]
+
+LaTeX Warning: Citation `kalman1960new' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `gu2021efficiently' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `gu2023mamba' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `vaswani2017attention' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `gu2020hippo' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `fu2022hungry' on page 3 undefined on input line 103.
+
+
+LaTeX Warning: Citation `gu2021efficiently' on page 3 undefined on input line 105.
+
+
+LaTeX Warning: Citation `gu2020hippo' on page 3 undefined on input line 105.
+
+
+LaTeX Warning: Citation `fu2022hungry' on page 3 undefined on input line 105.
+
+
+LaTeX Warning: Citation `gu2023mamba' on page 3 undefined on input line 105.
+
+
+LaTeX Warning: Citation `gu2023mamba' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Citation `zhu2024vim' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Citation `liu2024vmamba' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 3 undefined on input line 107.
+
+
+LaTeX Warning: Citation `ma2024umamba' on page 3 undefined on input line 107.
+
 File: ../Figures/SLMambaMedseg.pdf Graphic file (type pdf)
 <use ../Figures/SLMambaMedseg.pdf>
+
+LaTeX Warning: Reference `figure1' on page 3 undefined on input line 140.
+
+
+LaTeX Warning: Citation `ronneberger2015unet' on page 3 undefined on input line 140.
+
+
+LaTeX Warning: Citation `liu2024vmamba' on page 3 undefined on input line 140.
+
+
+LaTeX Warning: Citation `gu2023mamba' on page 3 undefined on input line 140.
+
+
+LaTeX Warning: Citation `liu2021swin' on page 3 undefined on input line 144.
+
+
+LaTeX Warning: Reference `figure1' on page 3 undefined on input line 146.
+
+
+LaTeX Warning: Citation `lin2017feature' on page 3 undefined on input line 146.
+
+
+LaTeX Warning: Citation `cao2023swin' on page 3 undefined on input line 146.
+
+
+LaTeX Warning: Citation `oktay2018attention' on page 3 undefined on input line 148.
+
 
 
 [3]
 
+LaTeX Warning: Reference `figure1' on page 4 undefined on input line 154.
+
+
+LaTeX Warning: Citation `zhu2024vim' on page 4 undefined on input line 154.
+
+
+LaTeX Warning: Citation `liu2024vmamba' on page 4 undefined on input line 154.
+
+
+LaTeX Warning: Reference `figure1' on page 4 undefined on input line 173.
+
+
+
 [4]
+
+LaTeX Warning: Reference `figure1' on page 5 undefined on input line 186.
+
+
+LaTeX Warning: Citation `woo2018cbam' on page 5 undefined on input line 188.
+
+
+LaTeX Warning: Reference `figure1' on page 5 undefined on input line 188.
+
+
+LaTeX Warning: Citation `he2014spatial' on page 5 undefined on input line 188.
+
+
+LaTeX Warning: Citation `lin2013network' on page 5 undefined on input line 188.
+
+
+LaTeX Warning: Citation `woo2018cbam' on page 5 undefined on input line 197.
+
+
+LaTeX Warning: Reference `figure1' on page 5 undefined on input line 197.
+
+
+LaTeX Warning: Reference `figure1' on page 5 undefined on input line 206.
+
+
+LaTeX Warning: Citation `howard2017mobilenets' on page 5 undefined on input line 206.
+
+
+LaTeX Warning: Citation `zhang2018shufflenet' on page 5 undefined on input line 206.
+
 File: ../Figures/Synapse.pdf Graphic file (type pdf)
 <use ../Figures/Synapse.pdf>
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Citation `isensee2021nnu' on page 5 undefined on input line 233.
+
+
+LaTeX Warning: Citation `ronneberger2015unet' on page 5 undefined on input line 234.
+
+
+LaTeX Warning: Citation `oktay2018attention' on page 5 undefined on input line 235.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 5 undefined on input line 236.
+
+
+LaTeX Warning: Citation `wang2022stepwise' on page 5 undefined on input line 237.
+
+
+LaTeX Warning: Citation `dong2021polyp' on page 5 undefined on input line 238.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 5 undefined on input line 239.
+
+
+LaTeX Warning: Citation `wang2022mixed' on page 5 undefined on input line 240.
+
+
+LaTeX Warning: Citation `ruan2022mew' on page 5 undefined on input line 241.
+
+
+LaTeX Warning: Citation `rahman2023medical' on page 5 undefined on input line 242.
+
+
+LaTeX Warning: Citation `azad2022transdeeplab' on page 5 undefined on input line 243.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 5 undefined on input line 244.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 5 undefined on input line 245.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `hou2020strip' on page 5 undefined on input line 258.
+
+
+LaTeX Warning: Citation `liu2023slak' on page 5 undefined on input line 258.
+
+
+LaTeX Warning: Citation `chu2021active' on page 5 undefined on input line 258.
 
 
 
 [5]
 
+LaTeX Warning: Reference `figure1' on page 6 undefined on input line 260.
+
+
+LaTeX Warning: Citation `hendrycks2016gelu' on page 6 undefined on input line 260.
+
+
+LaTeX Warning: Reference `figure1' on page 6 undefined on input line 260.
+
+
+
 [6]
+
+LaTeX Warning: Citation `landman2015miccai' on page 7 undefined on input line 290.
+
+
+LaTeX Warning: Citation `bernard2018deep' on page 7 undefined on input line 290.
+
+
 Overfull \hbox (0.15498pt too wide) in paragraph at lines 290--291
 \TU/lmr/m/n/10 To evaluate the proposed SLMambaMedseg, comprehensive experiments are conducted on two widely adopted
  []
 
 
+LaTeX Warning: Citation `chen2021transunet' on page 7 undefined on input line 292.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 7 undefined on input line 292.
+
+
+LaTeX Warning: Citation `bernard2018deep' on page 7 undefined on input line 292.
+
+
+LaTeX Warning: Citation `loshchilov2017decoupled' on page 7 undefined on input line 296.
+
+
+LaTeX Warning: Citation `loshchilov2016sgdr' on page 7 undefined on input line 296.
+
+
+LaTeX Warning: Citation `milletari2016v' on page 7 undefined on input line 298.
+
+
+LaTeX Warning: Citation `huttenlocher1993comparing' on page 7 undefined on input line 298.
+
+
+LaTeX Warning: Citation `ronneberger2015unet' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Citation `cao2023swin' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 7 undefined on input line 313.
+
+
+LaTeX Warning: Reference `table1' on page 7 undefined on input line 319.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 7 undefined on input line 319.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 7 undefined on input line 319.
+
+
 
 [7]
-Overfull \hbox (10.995pt too wide) in paragraph at lines 330--331
-\TU/lmr/m/n/10 dle portion of the left ventricle, while TransUNet[[]] misses the left portion of the myocardium. TransDeepLab[[]]
- []
+
+LaTeX Warning: Reference `figure2' on page 8 undefined on input line 321.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 8 undefined on input line 321.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 8 undefined on input line 321.
+
+
+LaTeX Warning: Citation `azad2022transdeeplab' on page 8 undefined on input line 321.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 8 undefined on input line 321.
+
+
+LaTeX Warning: Reference `table2' on page 8 undefined on input line 328.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 8 undefined on input line 328.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 8 undefined on input line 328.
+
+
+LaTeX Warning: Reference `figure3' on page 8 undefined on input line 330.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 8 undefined on input line 330.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 8 undefined on input line 330.
+
+
+LaTeX Warning: Citation `azad2022transdeeplab' on page 8 undefined on input line 330.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 8 undefined on input line 330.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 8 undefined on input line 330.
 
 File: ../Figures/ACDC.pdf Graphic file (type pdf)
 <use ../Figures/ACDC.pdf>
 
+LaTeX Warning: Citation `isensee2021nnu' on page 8 undefined on input line 348.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 8 undefined on input line 349.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 8 undefined on input line 350.
+
+
+LaTeX Warning: Citation `heidari2023hiformer' on page 8 undefined on input line 351.
+
+
+LaTeX Warning: Citation `azad2022transdeeplab' on page 8 undefined on input line 352.
+
+
+LaTeX Warning: Citation `wang2022mixed' on page 8 undefined on input line 353.
+
+
+LaTeX Warning: Citation `huang2022missformer' on page 8 undefined on input line 354.
+
+
+LaTeX Warning: Citation `sun2024paratranscnn' on page 8 undefined on input line 355.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 8 undefined on input line 356.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 8 undefined on input line 357.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Citation `ronneberger2015unet' on page 8 undefined on input line 373.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 8 undefined on input line 374.
+
+
+LaTeX Warning: Citation `chen2021transunet' on page 8 undefined on input line 375.
+
+
+LaTeX Warning: Citation `ruan2024vmunet' on page 8 undefined on input line 376.
+
+
+LaTeX Warning: Citation `rahman2023transcascade' on page 8 undefined on input line 377.
+
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Citation `ronneberger2015unet' on page 8 undefined on input line 406.
+
+
+LaTeX Warning: Citation `cao2021swinunet' on page 8 undefined on input line 406.
+
+
+LaTeX Warning: Reference `table3' on page 8 undefined on input line 406.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `table4' on page 8 undefined on input line 441.
 
 
 
 [8]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `table5' on page 9 undefined on input line 446.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `sec:loss' on page 9 undefined on input line 475.
 
 
 
 [9]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 
 [10]
 
@@ -611,21 +1029,34 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [12]
 
-[13] (./prcv2026.aux)
+[13] (./latex.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `prcv2026.out' has not changed.
-(rerunfilecheck)             Checksum: 0EE47EB6078A934DB57B6845D36308B7;669.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `latex.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `latex.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  0EE47EB6078A934DB57B6845D36308B7;669.
  ) 
 Here is how much of TeX's memory you used:
- 12525 strings out of 473832
- 200576 string characters out of 5718011
- 715146 words of memory out of 5000000
- 35380 multiletter control sequences out of 15000+600000
+ 12513 strings out of 473832
+ 200394 string characters out of 5718011
+ 708263 words of memory out of 5000000
+ 35375 multiletter control sequences out of 15000+600000
  568689 words of font info for 83 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,13n,93p,1445b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,13n,93p,1446b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on prcv2026.pdf (13 pages).
+Output written on latex.pdf (13 pages).
