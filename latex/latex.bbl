@@ -1,0 +1,210 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{bernard2018deep}
+Bernard, O., Lalande, A., Zotti, C., et~al.: Deep learning techniques for
+  automatic {MRI} cardiac multi-structures segmentation and diagnosis: is the
+  problem solved? IEEE Trans. Med. Imaging  \textbf{37}(11),  2514--2525 (2018)
+
+\bibitem{cao2021swinunet}
+Cao, H., Wang, Y., Chen, J., et~al.: {Swin-Unet}: Unet-like pure transformer
+  for medical image segmentation. In: {ECCV} 2022 Workshops. LNCS, vol. 13803,
+  pp. 205--218. Springer, Cham (2023)
+
+\bibitem{chen2021transunet}
+Chen, J., Lu, Y., Yu, Q., et~al.: {TransUNet}: Transformers make strong
+  encoders for medical image segmentation. Med. Image Anal.  (2024)
+
+\bibitem{chu2021active}
+Chu, L., Hu, X., Zheng, J., et~al.: Active strip convolution for medical image
+  segmentation. arXiv:2112.06456 (2021)
+
+\bibitem{ding2022scaling}
+Ding, X., Zhang, X., Han, J., et~al.: Scaling up your kernels to
+  {31$\times$31}: Revisiting large kernel design in {CNNs}. In: Proc. {CVPR}.
+  pp. 11963--11975 (2022)
+
+\bibitem{dong2021polyp}
+Dong, B., Wang, W., Fan, D.P., et~al.: {Polyp-PVT}: Polyp segmentation with
+  pyramid vision transformers. arXiv:2108.06932 (2021)
+
+\bibitem{dosovitskiy2020vit}
+Dosovitskiy, A., Beyer, L., Kolesnikov, A., et~al.: An image is worth
+  {16$\times$16} words: Transformers for image recognition at scale. In: Proc.
+  {ICLR} (2021)
+
+\bibitem{fu2022hungry}
+Fu, D.Y., Dao, T., Saab, K.K., et~al.: Hungry hungry hippos: Towards language
+  modeling with state space models. arXiv:2212.14052 (2022)
+
+\bibitem{gu2023mamba}
+Gu, A., Dao, T.: Mamba: Linear-time sequence modeling with selective state
+  spaces. arXiv:2312.00752 (2023)
+
+\bibitem{gu2020hippo}
+Gu, A., Dao, T., Ermon, S., et~al.: {HiPPO}: Recurrent memory with optimal
+  polynomial projections. In: Adv. Neural Information Processing Systems
+  ({NeurIPS}). vol.~33, pp. 1474--1487 (2020)
+
+\bibitem{gu2021efficiently}
+Gu, A., Goel, K., R{\'e}, C.: Efficiently modeling long sequences with
+  structured state spaces. arXiv:2111.00396 (2021)
+
+\bibitem{hatamizadeh2022unetr}
+Hatamizadeh, A., Tang, Y., Nath, V., et~al.: {UNETR}: Transformers for {3D}
+  medical image segmentation. In: Proc. {WACV}. pp. 574--584 (2022)
+
+\bibitem{he2014spatial}
+He, K., Zhang, X., Ren, S., et~al.: Spatial pyramid pooling in deep
+  convolutional networks for visual recognition. In: {ECCV} 2014. LNCS,
+  vol.~8691, pp. 346--361. Springer, Cham (2014)
+
+\bibitem{he2016resnet}
+He, K., Zhang, X., Ren, S., et~al.: Deep residual learning for image
+  recognition. In: Proceedings of the {IEEE} Conference on Computer Vision and
+  Pattern Recognition ({CVPR}). pp. 770--778 (2016)
+
+\bibitem{goloco2026}
+He, Y., Miquel, M.E., Zhang, Q.: {GoLoCo-Net}: Global-local guided contextual
+  attention network for medical images segmentation. Sci. Rep.  \textbf{16},
+  42415 (2026)
+
+\bibitem{hendrycks2016gelu}
+Hendrycks, D., Gimpel, K.: Gaussian error linear units ({GELUs}).
+  arXiv:1606.08415 (2016)
+
+\bibitem{hou2020strip}
+Hou, Q., Zhang, L., Cheng, M.M., et~al.: Strip pooling: Rethinking spatial
+  pooling for scene parsing. In: Proc. {CVPR}. pp. 4003--4012 (2020)
+
+\bibitem{acmunet2025}
+Huang, J., Zhao, Y., Li, Y., et~al.: {ACM-UNet}: Adaptive integration of {CNNs}
+  and {Mamba} for efficient medical image segmentation. arXiv:2505.24481 (2025)
+
+\bibitem{huang2022missformer}
+Huang, X., Deng, Z., Li, D., et~al.: {MISSFormer}: An effective transformer for
+  {2D} medical image segmentation. IEEE Trans. Med. Imaging  \textbf{42}(5),
+  1484--1494 (2023)
+
+\bibitem{huttenlocher1993comparing}
+Huttenlocher, D.P., Klanderman, G.A., Rucklidge, W.J.: Comparing images using
+  the {Hausdorff} distance. IEEE Trans. Pattern Anal. Mach. Intell.
+  \textbf{15}(9),  850--863 (1993)
+
+\bibitem{isensee2021nnu}
+Isensee, F., Jaeger, P.F., Kohl, S.A.A., et~al.: {nnU-Net}: A self-configuring
+  method for deep learning-based biomedical image segmentation. Nature Methods
+  \textbf{18}(2),  203--211 (2021)
+
+\bibitem{landman2015miccai}
+Landman, B., Xu, Z., Igelsias, J., et~al.: {MICCAI} multi-atlas labeling beyond
+  the cranial vault -- workshop and challenge. Workshop, MICCAI 2015 (2015)
+
+\bibitem{lecun2015deep}
+LeCun, Y., Bengio, Y., Hinton, G.: Deep learning. Nature  \textbf{521}(7553),
+  436--444 (2015)
+
+\bibitem{nexmamba2026}
+Liang, X., Lu, L., Ge, G., et~al.: {NexMamba}: Nexus-driven multi-domain
+  {Mamba} network for medical image segmentation. Biomed. Signal Process.
+  Control  \textbf{122},  110385 (2026)
+
+\bibitem{lin2013network}
+Lin, M., Chen, Q., Yan, S.: Network in network. arXiv:1312.4400 (2013)
+
+\bibitem{liu2024swinumamba}
+Liu, J., Yang, H., Zhou, H.Y., et~al.: {Swin-UMamba}: {Mamba}-based {UNet} with
+  {ImageNet}-based pretraining. In: {MICCAI} 2024. LNCS, Springer, Cham (2024)
+
+\bibitem{liu2023slak}
+Liu, S., Chen, T., Chen, X., et~al.: More {ConvNets} in the 2020s: Scaling up
+  kernels beyond {51$\times$51} using sparsity. In: Proc. {ICLR} (2023)
+
+\bibitem{liu2024vmamba}
+Liu, Y., Tian, Y., Zhao, Y., et~al.: {VMamba}: Visual state space model.
+  arXiv:2401.10166 (2024)
+
+\bibitem{liu2021swin}
+Liu, Z., Lin, Y., Cao, Y., et~al.: {Swin} transformer: Hierarchical vision
+  transformer using shifted windows. In: Proc. {ICCV}. pp. 10012--10022 (2021)
+
+\bibitem{liu2022convnext}
+Liu, Z., Mao, H., Wu, C.Y., et~al.: A {ConvNet} for the 2020s. In: Proc.
+  {CVPR}. pp. 11976--11986 (2022)
+
+\bibitem{loshchilov2016sgdr}
+Loshchilov, I., Hutter, F.: {SGDR}: Stochastic gradient descent with warm
+  restarts. arXiv:1608.03983 (2016)
+
+\bibitem{loshchilov2017decoupled}
+Loshchilov, I., Hutter, F.: Decoupled weight decay regularization.
+  arXiv:1711.05101 (2017)
+
+\bibitem{ma2024umamba}
+Ma, J., Li, F., Wang, B.: {U-Mamba}: Enhancing long-range dependency for
+  biomedical image segmentation. arXiv:2401.04722 (2024)
+
+\bibitem{milletari2016v}
+Milletari, F., Navab, N., Ahmadi, S.A.: {V-Net}: Fully convolutional neural
+  networks for volumetric medical image segmentation. In: Proc. {3DV}. pp.
+  565--571 (2016)
+
+\bibitem{oktay2018attention}
+Oktay, O., Schlemper, J., Le~Folgoc, L., et~al.: Attention {U-Net}: Learning
+  where to look for the pancreas. arXiv:1804.03999 (2018)
+
+\bibitem{msa2net2026}
+Qin, X., Deng, C., Li, X., et~al.: {MSA$^2$-Net}: Utilizing self-adaptive
+  convolution module to extract multi-scale information in medical image
+  segmentation. Sci. Prog.  \textbf{109},  00368504261432413 (2026)
+
+\bibitem{emcad2024}
+Rahman, M.M., Munir, M., Marculescu, R.: {EMCAD}: Efficient multi-scale
+  convolutional attention decoding for medical image segmentation. In: Proc.
+  {CVPR} (2024)
+
+\bibitem{rahman2023transcascade}
+Rahman, M.S., Bhattacharya, P.: {TransCASCADE}: Cascaded transformer for
+  medical image segmentation. Comput. Methods Programs Biomed.  \textbf{231},
+  107374 (2023)
+
+\bibitem{ronneberger2015unet}
+Ronneberger, O., Fischer, P., Brox, T.: {U-Net}: Convolutional networks for
+  biomedical image segmentation. In: {MICCAI} 2015. LNCS, vol.~9351, pp.
+  234--241. Springer, Cham (2015)
+
+\bibitem{ruan2024vmunet}
+Ruan, J., Xiang, S.: {VM-UNet}: Vision {Mamba} {UNet} for medical image
+  segmentation. arXiv:2402.02491 (2024)
+
+\bibitem{msmunet2025}
+Sun, J., Chen, K., Wu, X., et~al.: {MSM-UNet}: A medical image segmentation
+  method based on wavelet transform and multi-scale {Mamba-UNet}. Expert Syst.
+  Appl.  \textbf{288},  128241 (2025)
+
+\bibitem{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., et~al.: Attention is all you need. In:
+  Adv. Neural Information Processing Systems ({NeurIPS}). vol.~30 (2017)
+
+\bibitem{woo2018cbam}
+Woo, S., Park, J., Lee, J.Y., et~al.: {CBAM}: Convolutional block attention
+  module. In: {ECCV} 2018. LNCS, vol. 11211, pp. 3--19. Springer, Cham (2018)
+
+\bibitem{yu2024mambaout}
+Yu, W., Si, C., Zhou, P., et~al.: {MambaOut}: Do we really need {Mamba} for
+  vision? arXiv:2405.07992 (2024)
+
+\bibitem{zhou2018unet++}
+Zhou, Z., Siddiquee, M.M.R., Tajbakhsh, N., et~al.: {UNet++}: A nested {U-Net}
+  architecture for medical image segmentation. In: Deep Learning in Med. Image
+  Anal. and Multimodal Learning for Clinical Decision Support. LNCS, vol.
+  11045, pp. 3--11. Springer, Cham (2018)
+
+\bibitem{zhu2024vim}
+Zhu, L., Liao, B., Zhang, Q., et~al.: Vision {Mamba}: Efficient visual
+  representation learning with bidirectional state space model.
+  arXiv:2401.09417 (2024)
+
+\end{thebibliography}
